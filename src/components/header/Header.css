@@ -1,0 +1,50 @@
+.navbar-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 5px 10px;
+    background-color: #fff;
+}
+
+.logo {
+    font-size: 26px;
+    color: limegreen;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.nav-link {
+    font-size: 17px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: darkgray;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: dimgrey;
+}
+
+.nav-link:active {
+    color: black;
+}
+
+.banner {
+    text-align: center;
+    background-color: limegreen;
+    padding: 30px;
+}
+
+.banner>h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+}
+
+.banner>p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: white;
+}
