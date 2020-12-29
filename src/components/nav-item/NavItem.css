@@ -1,0 +1,9 @@
+.nItem {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: dimgrey;
+}
+.nItem:active{
+    border-bottom: limegreen;
+}

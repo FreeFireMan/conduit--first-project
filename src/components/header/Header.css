@@ -1,3 +1,7 @@
+.header-wrapper {
+    margin-bottom: 35px;
+}
+
 .navbar-wrapper {
     box-sizing: border-box;
     display: flex;
