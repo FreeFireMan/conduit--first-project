@@ -22,6 +22,7 @@
     color: darkgray;
     font-size: 19px;
     padding: 10px;
+    text-decoration: none;
     border-bottom: solid 2px #ffffff;
 }
 .nItem:hover {

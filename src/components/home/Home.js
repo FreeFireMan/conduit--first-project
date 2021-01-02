@@ -21,15 +21,16 @@ export default function Home() {
           <div className='column-post'>
 
             <div className='post-nav-link'>
-              <div onClick={() => dispatch(showFeed('your'))}
-                   className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Your Feed</div>
+              <Link to={loggedIn ? '/' : '/login'}
+                    onClick={() => dispatch(showFeed('your'))}
+                    className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Your Feed</Link>
               <div onClick={() => dispatch(showFeed('global'))}
                    className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>Global Feed</div>
               <div onClick={() => dispatch(showFeed('chosen'))}
                    className={active === 'chosen' ? 'nItem chosenItem' : 'nItem'}>#tag</div>
             </div>
 
-            {active === 'your' && loggedIn ? <Posts/> : <Link to={'/login'}/> }
+            {active === 'your' && loggedIn && <Posts/> }
             {active === 'global' && <Posts/>}
           </div>
 
