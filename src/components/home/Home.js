@@ -1,9 +1,15 @@
 import './Home.css'
-import NavItem from "../nav-item/NavItem";
+import {useDispatch, useSelector} from "react-redux";
+import {showFeed} from "../../redux/action-creators";
+import {Link} from "react-router-dom";
+import Posts from "../posts/Posts";
+
 
 export default function Home() {
 
-  const navArr = ['Your Feed', 'Global Feed']
+  const dispatch = useDispatch()
+  const active = useSelector(({homePage: {active}}) => active)
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   return (
       <div>
         <div className='banner'>
@@ -13,12 +19,25 @@ export default function Home() {
         <div className='body'>
 
           <div className='column-post'>
+
             <div className='post-nav-link'>
-              {navArr.map((value, i) => <NavItem key={i} value={value}/>)}
+              <div onClick={() => dispatch(showFeed('your'))}
+                   className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Your Feed</div>
+              <div onClick={() => dispatch(showFeed('global'))}
+                   className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>Global Feed</div>
+              <div onClick={() => dispatch(showFeed('chosen'))}
+                   className={active === 'chosen' ? 'nItem chosenItem' : 'nItem'}>#tag</div>
             </div>
+
+            {active === 'your' && loggedIn ? <Posts/> : <Link to={'/login'}/> }
+            {active === 'global' && <Posts/>}
           </div>
-          <div className='column-tag'>
-            <p>Popular Tags</p>
+
+          <div className='tag-wrapper'>
+            <div className='column-tag'>
+              <h4>Popular Tags</h4>
+
+            </div>
           </div>
         </div>
       </div>

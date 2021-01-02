@@ -9,14 +9,29 @@
 
 .post-nav-link {
     display: flex;
-    padding: 15px 0;
 }
 
-.column-tag {
-    width: 30%;
+.tag-wrapper {
+    width: 250px;
+    background-color: #d9d9d9;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-
+.nItem {
+    color: darkgray;
+    font-size: 19px;
+    padding: 10px;
+    border-bottom: solid 2px #ffffff;
+}
+.nItem:hover {
+    color: dimgrey;
+    cursor: pointer;
+}
+.chosenItem{
+    color: limegreen;
+    border-bottom: solid 2px limegreen;
+}
 
 .banner {
     text-align: center;
