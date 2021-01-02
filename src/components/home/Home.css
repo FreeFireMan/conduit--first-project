@@ -1,0 +1,38 @@
+.body {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+.column-post {
+    width: 70%;
+}
+
+.post-nav-link {
+    display: flex;
+    padding: 15px 0;
+}
+
+.column-tag {
+    width: 30%;
+}
+
+
+
+.banner {
+    text-align: center;
+    background-color: limegreen;
+    padding: 30px;
+    margin-bottom: 35px;
+}
+
+.banner>h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+}
+
+.banner>p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: white;
+}

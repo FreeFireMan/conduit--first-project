@@ -1,0 +1,85 @@
+.modal-wrapper {
+    height: 92vh;
+}
+
+.sign{
+    height: 84vh;
+    box-sizing: border-box;
+    padding-top: 40px;
+}
+.sign-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.sign-title {
+    font-size: 35px;
+}
+
+.sign-link {
+    color: limegreen;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+.sign-link:hover {
+    color: green;
+}
+
+.sign-input{
+    width: 450px;
+    margin-top: 15px;
+    padding: 8px 15px;
+    font-size: 20px;
+    border: 1px #d9d9d9 solid;
+    border-radius: 4px;
+}
+
+.btn-wrapper {
+    width: 450px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign-btn {
+    width: 110px;
+    height: 47px;
+    font-size: 24px;
+    color: white;
+    background-color: limegreen;
+    border-radius: 6px;
+}
+.sign-btn:hover {
+    cursor: pointer;
+    background-color: green;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d9d9d9;
+    height: 8vh;
+}
+
+.logo-footer {
+    font-size: 17px;
+    color: limegreen;
+    text-decoration: none;
+    margin-right: 7px;
+}
+
+.green-link {
+    color: limegreen;
+}
+.green-link:hover {
+    color: green;
+}
+.logo-footer:hover {
+    color: green;
+}
+
+.fs13{
+    font-size: 13px;
+}

@@ -1,15 +1,22 @@
 import './App.css';
+import {Route, Switch} from "react-router-dom";
 import Header from "./components/header/Header";
-import Body from "./components/body/Body";
-import {useState} from "react/cjs/react.production.min";
+import Home from "./components/home/Home";
+import SignIn from "./components/sign-in/SignIn";
+import SignUp from "./components/sign-up/SignUp";
 
 function App() {
-  const {loginUser, setLoginUser} = useState()
+
   return (
-    <div className="App">
-      <Header loginUser={loginUser}/>
-      <Body loginUser={loginUser}/>
-    </div>
+      <div className="App">
+        <Header/>
+
+        <Switch>
+          <Route path={'/login'} component={SignIn}/>
+          <Route path={'/register'} component={SignUp}/>
+          <Route path={'/'} component={Home}/>
+        </Switch>
+      </div>
   );
 }
 
