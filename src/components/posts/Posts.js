@@ -1,12 +1,14 @@
 import './Posts.css'
+import React, {useEffect} from "react";
 import doFetch from "../../services/doFetch";
-import {useEffect} from "react/cjs/react.production.min";
 
 export default function Posts (){
-  // useEffect( () => {
-  doFetch('/api/articles')
-      // .then(value => console.log(value))
-  // }, [])
+
+  useEffect( () => {
+  doFetch('/api/articles?limit=10&offset=0')
+      .then(posts => console.log(posts))
+  }, [])
+
     return (
         <div>
             111111
