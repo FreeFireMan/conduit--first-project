@@ -4,9 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {choseNavLink} from "../../redux/action-creators";
 
 export default function Header() {
+
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   const navLinkActive = useSelector(({homePage: {navLinkActive}}) => navLinkActive)
   const dispatch = useDispatch()
+
   return (
       <div className='header-wrapper'>
         <div className='navbar-wrapper'>
