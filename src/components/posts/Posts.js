@@ -8,8 +8,8 @@ import Post from "../post/Post";
 
 export default function Posts() {
 
-  const {posts, posts:{articles}} = useSelector(({homePage: {posts}}) => ({posts}))
-  const dispatch = useDispatch ()
+  const {posts, posts: {articles}} = useSelector(({homePage: {posts}}) => ({posts}))
+  const dispatch = useDispatch()
 
   useEffect(() => {
 
