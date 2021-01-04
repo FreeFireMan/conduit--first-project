@@ -1,6 +1,6 @@
 export default function doFetch (url){
   const baseUrl = 'https://conduit.productionready.io'
-  fetch(baseUrl + url)
+  return fetch(baseUrl + url)
       .then(response => response.json())
-      .then(json => json)
+      // .then(json => json)
 }
