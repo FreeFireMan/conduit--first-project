@@ -45,11 +45,11 @@ function PostFull({match: {params: {linkToFullPost}}}) {
               </div>
               <div className='chosen-post-user-info'>
 
-                <input onClick={() => dispatch(followChosenUser())}
+                <input onClick={() => dispatch(followChosenUser())} //TODO
                        type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
 
-                <input onClick={() => dispatch(favoriteChosenArticle())}
+                <input onClick={() => dispatch(favoriteChosenArticle())} //TODO
                        type="button"
                        value={1 ? `Favorite Article (${favoritesCount})` : `Unfavorite Article (${favoritesCount})`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
@@ -71,11 +71,11 @@ function PostFull({match: {params: {linkToFullPost}}}) {
               </div>
               <div className='chosen-post-user-info'>
 
-                <input onClick={() => dispatch(followChosenUser())}
+                <input onClick={() => dispatch(followChosenUser())} //TODO
                        type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`} required
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
 
-                <input onClick={() => dispatch(favoriteChosenArticle())}
+                <input onClick={() => dispatch(favoriteChosenArticle())} //TODO
                        type="button"
                        value={1 ? `Favorite Article (${favoritesCount})` : `Unfavorite Article (${favoritesCount})`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
