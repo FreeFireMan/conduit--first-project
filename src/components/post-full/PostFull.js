@@ -73,15 +73,16 @@ function PostFull({match: {params: {linkToFullPost}}}) {
               </div>
             </div>
 
+            <div className='comment-wrapper'>
               <textarea className='input-comment' placeholder='Write a comment...'/>
               <div className='comment-btn-wrapper'>
                 <div className='comment-btn-wrapper-2'>
-                  <img src={0 && image } className='chosen-user-photo'/>
+                  <img src={0 && image} className='chosen-user-photo'/>
                   <input type="button" value='Post Comment' className='post-comment-btn'/>
                   {/*TODO*/}
                 </div>
               </div>
-
+            </div>
 
 
           </div>
