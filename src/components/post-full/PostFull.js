@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Loading from "../../services/Loading";
 import FooterPage from "../footer-page/FooterPage";
+import {favoriteChosenArticle, followChosenUser} from "../../redux/action-creators/user";
 
 function PostFull({match: {params: {linkToFullPost}}}) {
 
@@ -43,9 +44,13 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                 </div>
               </div>
               <div className='chosen-post-user-info'>
-                <input type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`}
+
+                <input onClick={() => dispatch(followChosenUser())}
+                       type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
-                <input type="button"
+
+                <input onClick={() => dispatch(favoriteChosenArticle())}
+                       type="button"
                        value={1 ? `Favorite Article (${favoritesCount})` : `Unfavorite Article (${favoritesCount})`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
               </div>
@@ -65,9 +70,13 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                 </div>
               </div>
               <div className='chosen-post-user-info'>
-                <input type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`} required
-                       className={0 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
-                <input type="button"
+
+                <input onClick={() => dispatch(followChosenUser())}
+                       type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`} required
+                       className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
+
+                <input onClick={() => dispatch(favoriteChosenArticle())}
+                       type="button"
                        value={1 ? `Favorite Article (${favoritesCount})` : `Unfavorite Article (${favoritesCount})`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
               </div>

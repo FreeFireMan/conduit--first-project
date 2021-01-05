@@ -1,3 +1,6 @@
 
 export const IS_LOG_IN = 'IS_LOG_IN'
 export const IS_LOG_OUT = 'IS_LOG_OUT'
+
+export const FOLLOW_CHOSEN_USER = 'FOLLOW_CHOSEN_USER'
+export const FAVORITE_CHOSEN_ARTICLE = 'FAVORITE_CHOSEN_ARTICLE'
