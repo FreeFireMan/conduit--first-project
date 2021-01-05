@@ -6,15 +6,14 @@ import SignIn from "./components/sign-in/SignIn";
 import SignUp from "./components/sign-up/SignUp";
 import PostFull from "./components/post-full/PostFull";
 
-function App({location: {pathname}}) {
-  const urlOnePost = pathname.slice(9, pathname.length)
+function App() {
 
   return (
       <div className="App">
         <Header/>
 
         <Switch>
-          <Route path={`/article/:hdjhdfjhdjhd`} component={PostFull}/>
+          <Route path={`/article/:linkToFullPost`} component={PostFull}/>
           <Route path={'/login'} component={SignIn}/>
           <Route path={'/register'} component={SignUp}/>
           <Route path={'/'} component={Home}/>
@@ -23,4 +22,4 @@ function App({location: {pathname}}) {
   );
 }
 
-export default withRouter(App);
+export default App;

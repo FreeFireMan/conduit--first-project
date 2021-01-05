@@ -2,6 +2,7 @@ import './SignIn.css'
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {ClickSignIn, InputValueEmail, InputValuePass} from "../../redux/action-creators";
+import FooterPage from "../footer-page/FooterPage";
 
 export default function SignIn() {
 
@@ -25,12 +26,7 @@ export default function SignIn() {
           </div>
         </div>
 
-        <footer className='fs13 modal-footer'>
-          <Link to='/' className='logo-footer'><p><b>conduit</b></p></Link>
-          <p>© 2021. An interactive learning project from <a href="https://thinkster.io/"
-                                                             className='green-link'>Thinkster</a></p>
-          <p>. Code licensed under MIT.</p>
-        </footer>
+        <FooterPage/>
 
       </div>
   );

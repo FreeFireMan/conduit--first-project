@@ -8,7 +8,7 @@ import Post from "../post/Post";
 
 export default function Posts() {
 
-  const {posts, posts: {articles}} = useSelector(({homePage: {posts}}) => ({posts}))
+  const {articles} = useSelector(({homePage: {posts}}) => posts)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Posts() {
   return (
       <div>
         {(!!articles)
-            ? articles.map(post => <Post post={post}/>)
+            ? articles.map((post, i) => <Post post={post} key={i}/>)
             : <Loading/>}
       </div>
   );

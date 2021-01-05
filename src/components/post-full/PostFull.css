@@ -1,0 +1,135 @@
+.banner-chosen-post {
+    height: 24vh;
+    background-color: #373737;
+    padding: 10px 10% 30px;
+    margin-bottom: 35px;
+}
+.banner-chosen-post>h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+}
+
+.chosen-post-header {
+    display: flex;
+}
+.chosen-post-user-info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.chosen-user-photo {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+.chosen-post-user-name {
+    font-size: 20px;
+    margin-top: -5px;
+    color: #ffffff;
+    margin-left: 9px;
+    margin-right: 25px;
+}
+.chosen-post-user-date {
+    margin-top: -5px;
+    font-size: 11px;
+    color: #d9d9d9;
+    margin-left: 9px;
+    margin-right: 25px;
+}
+
+
+.chosen-post-btn-like {
+    font-size: 15px;
+    color: green;
+    border: green 1px solid;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: rgba(1,1,1,0);
+}
+.chosen-post-btn-like:hover {
+    background-color: green;
+    color: white;
+}
+.chosen-post-btn-like:active {
+    background-color: darkgreen;
+}
+
+.chosen-post-btn-unlike {
+    color: red;
+    border: red 1px solid;
+}
+.chosen-post-btn-unlike:hover {
+    background-color: red;
+    color: white;
+}
+.chosen-post-btn-unlike:active {
+    background-color: darkred;
+}
+
+
+.favorites-count {
+    font-size: 15px;
+}
+
+.chosen-body {
+    min-height: 55vh;
+    margin: 0 10%;
+}
+.chosen-body-body {
+    font-size: 20px;
+    margin: 0 -5%;
+}
+
+.chosen-post-user-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 85px;
+    margin-bottom: 45px;
+    padding: 15px;
+    border-top: #d9d9d9 solid 1px;
+}
+.name2 {
+    color: #373737;
+}
+
+.input-comment {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 110px;
+    border: #d9d9d9 1px solid;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 15px 25px;
+    font-size: 18px;
+}
+.comment-btn-wrapper {
+    width: 100%;
+    border: #d9d9d9 1px solid;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 15px;
+    background-color: #e7e7e7;
+}
+.comment-btn-wrapper-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-comment-btn{
+    border: green 1px solid;
+    border-radius: 6px;
+    padding: 3px 10px;
+    background-color: limegreen;
+    font-size: 17px;
+    color: white;
+}
+.post-comment-btn:hover {
+    cursor: pointer;
+    background-color: green;
+}
+.post-comment-btn:active {
+    background-color: darkgreen;
+}

@@ -55,31 +55,3 @@
     background-color: green;
 }
 
-.modal-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #d9d9d9;
-    height: 8vh;
-}
-
-.logo-footer {
-    font-size: 17px;
-    color: limegreen;
-    text-decoration: none;
-    margin-right: 7px;
-}
-
-.green-link {
-    color: limegreen;
-}
-.green-link:hover {
-    color: green;
-}
-.logo-footer:hover {
-    color: green;
-}
-
-.fs13{
-    font-size: 13px;
-}

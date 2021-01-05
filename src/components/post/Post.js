@@ -1,11 +1,9 @@
 import './Post.css'
 import {Link} from "react-router-dom";
 
-export default function Post({
-                               post, post: {
+export default function Post({post, post: {
     author: {bio, following, image, username},
-    body, createdAt, description, favorited, favoritesCount, slug, tagList, title, updatedAt
-  }
+    body, createdAt, description, favorited, favoritesCount, slug, tagList, title, updatedAt}
                              }) {
   const month = new Date(createdAt).getMonth() + 1
   const day = new Date(createdAt).getDay()
