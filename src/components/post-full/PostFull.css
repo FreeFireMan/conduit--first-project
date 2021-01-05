@@ -86,13 +86,14 @@
     display: flex;
     justify-content: center;
     margin-top: 85px;
-    margin-bottom: 45px;
+    margin-bottom: 55px;
     padding: 15px;
     border-top: #d9d9d9 solid 1px;
 }
 .name2 {
     color: #373737;
 }
+
 
 .comment-wrapper {
     display: flex;
@@ -101,8 +102,8 @@
 }
 
 .input-comment {
-    max-width: 80%;
-    min-width: 80%;
+    max-width: 70%;
+    min-width: 70%;
     min-height: 110px;
     border: #d9d9d9 1px solid;
     border-top-left-radius: 8px;
@@ -111,7 +112,7 @@
     font-size: 18px;
 }
 .comment-btn-wrapper {
-    width: 80%;
+    width: 70%;
     border: #d9d9d9 1px solid;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
