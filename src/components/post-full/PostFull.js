@@ -49,7 +49,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                        type="button" value={1 ? `Follow ${username}` : `Unfollow ${username}`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
 
-                <input onClick={() => dispatch(favoriteChosenArticle())} //TODO
+                <input onClick={() => dispatch(favoriteChosenArticle())}  //TODO
                        type="button"
                        value={1 ? `Favorite Article (${favoritesCount})` : `Unfavorite Article (${favoritesCount})`}
                        className={1 ? 'chosen-post-btn-like' : 'chosen-post-btn-like chosen-post-btn-unlike'}/>
