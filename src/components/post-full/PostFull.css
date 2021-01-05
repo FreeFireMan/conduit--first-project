@@ -2,7 +2,6 @@
     height: 24vh;
     background-color: #373737;
     padding: 10px 10% 30px;
-    margin-bottom: 35px;
 }
 .banner-chosen-post>h1 {
     font-size: 50px;
@@ -74,8 +73,11 @@
 }
 
 .chosen-body {
-    min-height: 55vh;
+    box-sizing: border-box;
+    min-height: 60vh;
     margin: 0 10%;
+    padding-top: 35px;
+    padding-bottom: 80px;
 }
 .chosen-body-body {
     font-size: 20px;
@@ -140,4 +142,19 @@
 }
 .post-comment-btn:active {
     background-color: darkgreen;
+}
+
+.text {
+    display: flex;
+    font-size: 20px;
+    margin-top: 15px;
+}
+.text-link {
+    text-decoration: none;
+    color: limegreen;
+    margin: 0 5px;
+}
+.text-link:hover {
+    text-decoration: underline;
+    color: green;
 }

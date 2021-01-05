@@ -10,7 +10,7 @@ import FooterPage from "../footer-page/FooterPage";
 function PostFull({match: {params: {linkToFullPost}}}) {
 
   const dispatch = useDispatch()
-  const chosenPost = useSelector(({homePage: {chosenPost}}) => chosenPost)
+  const {chosenPost, loggedIn} = useSelector(({homePage: {chosenPost}, user: {loggedIn}}) => ({chosenPost, loggedIn}))
 
   useEffect(() => {
     doFetch(`/api/articles/${linkToFullPost}`)
@@ -73,17 +73,25 @@ function PostFull({match: {params: {linkToFullPost}}}) {
               </div>
             </div>
 
-            <div className='comment-wrapper'>
-              <textarea className='input-comment' placeholder='Write a comment...'/>
-              <div className='comment-btn-wrapper'>
-                <div className='comment-btn-wrapper-2'>
-                  <img src={0 && image} className='chosen-user-photo'/>
-                  <input type="button" value='Post Comment' className='post-comment-btn'/>
-                  {/*TODO*/}
+            {loggedIn
+                ? <div className='comment-wrapper'>
+                  <textarea className='input-comment' placeholder='Write a comment...'/>
+                  <div className='comment-btn-wrapper'>
+                    <div className='comment-btn-wrapper-2'>
+                      <img src='../../img/default.jpg' className='chosen-user-photo' alt='avatar'/>
+                      <input type="button" value='Post Comment' className='post-comment-btn'/>
+                      {/*TODO*/}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+                : <div className='text'>
+                  <Link to={'/login'} className='text-link'>Sign in</Link>
+                  <p> or </p>
+                  <Link to={'/register'} className='text-link'>sign up</Link>
+                  <p> to add comments on this article.</p>
+                </div>
 
+            }
 
           </div>
 
@@ -93,7 +101,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
     )
 
   }
-  return <Loading/>
+return <Loading/>
 }
 
 export default withRouter(PostFull)
