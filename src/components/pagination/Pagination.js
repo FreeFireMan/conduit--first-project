@@ -1,6 +1,7 @@
 import './Pagination.css'
 import React from "react";
 import {useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
 
 export default function Pagination() {
 
@@ -11,7 +12,7 @@ export default function Pagination() {
 
   return (
       <div className='pagination-wrapper'>
-        {arrPag.map((value, i) => <div key={i} className='pagination-item'>{i + 1}</div>)
+        {arrPag.map((value, i) => <NavLink to={'/page/'+i} key={i} className='pagination-item'>{i + 1}</NavLink>)
         }
       </div>
   );
