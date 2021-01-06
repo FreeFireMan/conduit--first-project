@@ -43,6 +43,9 @@
 /*Profile - body*/
 .profile-body {
     min-height: 48vh;
+    width: 75%;
+    margin: auto;
+    padding: 30px 0 40px;
 }
 .profile-nav-link {
     display: flex;
