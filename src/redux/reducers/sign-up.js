@@ -9,28 +9,24 @@ const initialState = {username: '', email: '', password: '', user: {username: ''
 
 export const signUpReducer = (state = initialState, action) => {
 
-  const {username, email, password, user} = state
+  const {username, email, password} = state
   const {payload} = action
 
   switch (action.type) {
 
     case INPUT_VALUE_REGISTER_USERNAME: {
-      console.log(payload)
       return {...state, username: payload}
     }
 
     case INPUT_VALUE_REGISTER_EMAIL: {
-      console.log(payload)
       return {...state, email: payload}
     }
 
     case INPUT_VALUE_REGISTER_PASS: {
-      console.log(payload)
       return {...state, password: payload}
     }
 
     case CLICK_SIGN_UP: {
-      console.log(user)
       return {...state, user: {username, email, password}}
     }
 

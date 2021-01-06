@@ -9,7 +9,7 @@ import Post from "../post/Post";
 
 export default function Posts() {
 
-  const {posts, posts:{articles}} = useSelector(({homePage: {posts}}) => ({posts}))
+  const {articles} = useSelector(({post: {posts}}) => posts)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Posts() {
           return dispatch(getGlobalPosts(posts))
         })
 
-  }, [])
+  }, [dispatch])
 
   return (
       <div>

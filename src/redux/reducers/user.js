@@ -14,8 +14,6 @@ export const userReducer = (state= initialState, action) => {
       return {...state, loggedIn: false}
     }
 
-
-
     default: {
       return state
     }

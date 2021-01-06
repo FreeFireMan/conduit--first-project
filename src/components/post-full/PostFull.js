@@ -1,30 +1,31 @@
 import './PostFull.css'
 import {Link, withRouter} from "react-router-dom";
 import doFetch from "../../services/doFetch";
-import {getChosenPost} from "../../redux/action-creators";
+import {favoriteChosenArticle, followChosenUser, getChosenPost} from "../../redux/action-creators";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Loading from "../../services/Loading";
 import FooterPage from "../footer-page/FooterPage";
-import {favoriteChosenArticle, followChosenUser} from "../../redux/action-creators/user";
 
 function PostFull({match: {params: {linkToFullPost}}}) {
 
   const dispatch = useDispatch()
-  const {chosenPost, loggedIn} = useSelector(({homePage: {chosenPost}, user: {loggedIn}}) => ({chosenPost, loggedIn}))
+  const {chosenPost, loggedIn} = useSelector(({post: {chosenPost}, user: {loggedIn}}) => ({chosenPost, loggedIn}))
 
   useEffect(() => {
     doFetch(`/api/articles/${linkToFullPost}`)
         .then(post => {
           return dispatch(getChosenPost(post.article))
         })
-  }, [])
+  }, [dispatch, linkToFullPost])
 
   if (chosenPost.author) {
-    const {
-      author: {bio, following, image, username},
-      body, createdAt, description, favorited, favoritesCount, slug, tagList, title, updatedAt
-    } = chosenPost
+    const {author: {image, username}, body, createdAt, favoritesCount} = chosenPost
+
+    // const {
+    //   author: {bio, following, image, username},
+    //   body, createdAt, description, favorited, favoritesCount, slug, tagList, title, updatedAt
+    // } = chosenPost
 
     const month = new Date(createdAt).getMonth() + 1
     const day = new Date(createdAt).getDay()
@@ -110,7 +111,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
     )
 
   }
-return <Loading/>
+  return <Loading/>
 }
 
 export default withRouter(PostFull)

@@ -4,7 +4,7 @@ const initialState = {email: '', password: '', user: {email: "", password: ""}}
 
 export const signInReducer = (state = initialState, action) => {
 
-  const {email, password, user} = state
+  const {email, password} = state
   const {payload} = action
 
   switch (action.type) {
@@ -18,7 +18,6 @@ export const signInReducer = (state = initialState, action) => {
     }
 
     case CLICK_SIGN_IN: {
-      console.log(user)
       return {...state, user: {email, password}}
     }
 
