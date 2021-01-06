@@ -15,3 +15,12 @@
     cursor: pointer;
     background-color: #d0d0d0;
 }
+
+.act{
+    border: solid 1px green;
+    background-color: limegreen;
+    color: white;
+}
+.act:hover {
+    background-color: green;
+}

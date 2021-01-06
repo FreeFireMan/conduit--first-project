@@ -4,8 +4,9 @@ import {showFeed} from "../../redux/action-creators";
 import {Link} from "react-router-dom";
 import Posts from "../posts/Posts";
 import FooterPage from "../footer-page/FooterPage";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Pagination from "../pagination/Pagination";
+import doFetch from "../../services/doFetch";
 
 
 export default function Home() {
@@ -13,6 +14,14 @@ export default function Home() {
   const dispatch = useDispatch()
   const active = useSelector(({homePage: {active}}) => active)
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+
+  const [popularTag, setPopularTag] = useState([])
+  
+  useEffect(() => {
+    doFetch('/api/tags')
+        .then(value => setPopularTag(value.tags))
+  }, [setPopularTag])
+  console.log(popularTag)
   return (
       <div>
         <div className='banner'>
@@ -36,14 +45,16 @@ export default function Home() {
             {active === 'your' && loggedIn && <Posts/> }
             {active === 'global' && <Posts/>}
 
-            <Pagination/>
+            {active === 'global' && <Pagination/>}
           </div>
 
 
           <div className='tag-wrapper'>
             <div className='column-tag'>
               <h4>Popular Tags</h4>
-                TODO
+              <div className='tag-wrapper-2'>
+                {!!popularTag && popularTag.map((value, i) => <div key={i} className='popular-tag'>{value}</div>)}
+              </div>
             </div>
           </div>
 

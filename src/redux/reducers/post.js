@@ -5,7 +5,7 @@ import {
   FAVORITE_CHOSEN_ARTICLE
 } from "../action-types";
 
-const initialState = {posts: {}, chosenPost: {}, pagination: 0}
+const initialState = {posts: {}, chosenPost: {}, pagination: 0, paginationActive: 1}
 
 export const postReducer = (state = initialState, action) => {
 
