@@ -16,12 +16,12 @@ export default function Home() {
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
 
   const [popularTag, setPopularTag] = useState([])
-  
+
   useEffect(() => {
     doFetch('/api/tags')
         .then(value => setPopularTag(value.tags))
   }, [setPopularTag])
-  console.log(popularTag)
+
   return (
       <div>
         <div className='banner'>
@@ -37,12 +37,14 @@ export default function Home() {
                     onClick={() => dispatch(showFeed('your'))}
                     className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Your Feed</Link>
               <div onClick={() => dispatch(showFeed('global'))}
-                   className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>Global Feed</div>
+                   className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>Global Feed
+              </div>
               <div onClick={() => dispatch(showFeed('chosen'))}
-                   className={active === 'chosen' ? 'nItem chosenItem' : 'nItem'}>#tag</div>
+                   className={active === 'chosen' ? 'nItem chosenItem' : 'nItem'}>#tag
+              </div>
             </div>
 
-            {active === 'your' && loggedIn && <Posts/> }
+            {active === 'your' && loggedIn && <Posts/>}
             {active === 'global' && <Posts/>}
 
             {active === 'global' && <Pagination/>}

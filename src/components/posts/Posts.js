@@ -5,21 +5,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {getGlobalPosts} from "../../redux/action-creators";
 import Loading from "../../services/Loading";
 import Post from "../post/Post";
+import {withRouter} from "react-router-dom";
 
-
-export default function Posts() {
+function Posts({match:{params:{numberPage}}}) {
 
   const {articles} = useSelector(({post: {posts}}) => posts)
   const dispatch = useDispatch()
 
   useEffect(() => {
-
-    doFetch('/api/articles?limit=10&offset=0')
+    let url = '/api/articles?limit=10&offset=0'
+    if(numberPage) {
+      url = `/api/articles?limit=10&offset=${numberPage--}0`
+    }
+    doFetch(url)
         .then(posts => {
           return dispatch(getGlobalPosts(posts))
         })
 
-  }, [dispatch])
+  }, [dispatch, numberPage])
 
   return (
       <div>
@@ -29,3 +32,4 @@ export default function Posts() {
       </div>
   );
 }
+export default withRouter(Posts)

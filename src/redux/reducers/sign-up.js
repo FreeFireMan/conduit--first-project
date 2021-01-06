@@ -4,6 +4,7 @@ import {
   INPUT_VALUE_REGISTER_EMAIL,
   INPUT_VALUE_REGISTER_PASS
 } from "../action-types";
+import postFetch from "../../services/postFetch";
 
 const initialState = {username: '', email: '', password: '', user: {username: '', email: "", password: ""}}
 
@@ -27,7 +28,9 @@ export const signUpReducer = (state = initialState, action) => {
     }
 
     case CLICK_SIGN_UP: {
-      return {...state, user: {username, email, password}}
+      const data = {user: {email, password, username}}
+      postFetch('/api/users', data)
+      return state
     }
 
     default: {

@@ -9,6 +9,8 @@
     align-items: center;
     width: 40px;
     height: 40px;
+    text-decoration: none;
+    color: #373737;
     border: solid 1px #d0d0d0;
 }
 .pagination-item:hover {

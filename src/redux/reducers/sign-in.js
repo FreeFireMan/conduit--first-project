@@ -1,4 +1,5 @@
 import {CLICK_SIGN_IN, INPUT_VALUE_EMAIL, INPUT_VALUE_PASS} from "../action-types";
+import postFetch from "../../services/postFetch";
 
 const initialState = {email: '', password: '', user: {email: "", password: ""}}
 
@@ -18,7 +19,9 @@ export const signInReducer = (state = initialState, action) => {
     }
 
     case CLICK_SIGN_IN: {
-      return {...state, user: {email, password}}
+      const data = {user: {email, password}}
+      postFetch('/api/users/login', data)
+      return state
     }
 
     default: {
