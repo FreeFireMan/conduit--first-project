@@ -1,8 +1,17 @@
 .pagination-wrapper{
+    margin: 50px 0;
     display: flex;
     flex-wrap: wrap;
 }
 .pagination-item {
-    border: #d0d0d0;
-    color: #d0d0d0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: solid 1px #d0d0d0;
+}
+.pagination-item:hover {
+    cursor: pointer;
+    background-color: #d0d0d0;
 }

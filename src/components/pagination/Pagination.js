@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 
 export default function Pagination() {
 
-  const pagination = useSelector(({homePage: {pagination}}) => pagination)
+  const pagination = useSelector(({post: {pagination}}) => pagination)
   const arrPag = []
   arrPag[pagination - 1] = pagination
+  arrPag.fill(0)
 
   return (
       <div className='pagination-wrapper'>

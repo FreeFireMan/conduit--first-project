@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Loading from "../../services/Loading";
 import FooterPage from "../footer-page/FooterPage";
+import Pagination from "../pagination/Pagination";
 
 function PostFull({match: {params: {linkToFullPost}}}) {
 
@@ -20,7 +21,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
   }, [dispatch, linkToFullPost])
 
   if (chosenPost.author) {
-    const {author: {image, username}, body, createdAt, favoritesCount} = chosenPost
+    const {author: {image, username}, body, createdAt, tagList, favoritesCount} = chosenPost
 
     // const {
     //   author: {bio, following, image, username},
@@ -62,6 +63,10 @@ function PostFull({match: {params: {linkToFullPost}}}) {
 
             <div className='chosen-body-body'>{body}</div>
 
+            <div className='post-tag-wrapper'>
+              {tagList.map((item, i) => <div key={i} className='post-tag'>{item}</div>)}
+            </div>
+
             <div className='chosen-post-user-wrapper'>
               <div className='chosen-post-user-info'>
                 <img className='chosen-user-photo' src={`${image}`} alt='аватар'/>
@@ -100,13 +105,12 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                   <Link to={'/register'} className='text-link'>sign up</Link>
                   <p> to add comments on this article.</p>
                 </div>
-
             }
 
+            <Pagination/>
           </div>
 
           <FooterPage/>
-
         </div>
     )
 
