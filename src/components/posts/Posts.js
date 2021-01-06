@@ -6,9 +6,10 @@ import {getGlobalPosts} from "../../redux/action-creators";
 import Loading from "../../services/Loading";
 import Post from "../post/Post";
 
+
 export default function Posts() {
 
-  const {articles} = useSelector(({homePage: {posts}}) => posts)
+  const {posts, posts:{articles}} = useSelector(({homePage: {posts}}) => ({posts}))
   const dispatch = useDispatch()
 
   useEffect(() => {

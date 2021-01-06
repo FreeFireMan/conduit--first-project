@@ -1,0 +1,8 @@
+.pagination-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pagination-item {
+    border: #d0d0d0;
+    color: #d0d0d0;
+}

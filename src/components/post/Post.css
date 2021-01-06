@@ -53,9 +53,31 @@
 .post-body {
     color: #d0d0d0;
 }
+
+.post-all-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
 .post-all-info {
     text-decoration: none;
     font-size: 13px;
     color: #d0d0d0;
-
+}
+.post-tag-wrapper{
+    display: flex;
+}
+.post-tag{
+    border: solid 1px #d0d0d0;
+    border-radius: 12px;
+    color: #d0d0d0;
+    font-size: 13px;
+    padding: 2px 9px;
+    margin-left: 3px;
+}
+.post-tag:hover {
+    cursor: pointer;
+    border: solid 1px darkgray;
+    color: darkgray;
 }

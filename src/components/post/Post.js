@@ -26,7 +26,12 @@ export default function Post({post, post: {
         </div>
         <h3>{title}</h3>
         <p className='post-body'>{body}</p>
+        <div className='post-all-info-wrapper'>
         <Link className='post-all-info' to={`/article/${slug}`}>Read more...</Link>
+          <div className='post-tag-wrapper'>
+            {tagList.map((item, i) => <div key={i} className='post-tag'>{item}</div>)}
+          </div>
+        </div>
       </div>
   );
 }

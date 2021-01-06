@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {showFeed} from "../../redux/action-creators";
 import {Link} from "react-router-dom";
 import Posts from "../posts/Posts";
+import FooterPage from "../footer-page/FooterPage";
+import React from "react";
+import Pagination from "../pagination/Pagination";
 
 
 export default function Home() {
@@ -32,15 +35,20 @@ export default function Home() {
 
             {active === 'your' && loggedIn && <Posts/> }
             {active === 'global' && <Posts/>}
+
+            <Pagination/>
           </div>
+
 
           <div className='tag-wrapper'>
             <div className='column-tag'>
               <h4>Popular Tags</h4>
-
+                TODO
             </div>
           </div>
+
         </div>
+        <FooterPage/>
       </div>
   );
 }
