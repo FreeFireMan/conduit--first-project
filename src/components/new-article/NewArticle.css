@@ -1,5 +1,5 @@
-/*settings-form*/
-.settings-form {
+/*new-article-form*/
+.new-article-form {
     text-align: center;
     font-size: 22px;
     width: 70%;
@@ -9,7 +9,7 @@
     margin: auto;
     padding: 20px;
 }
-.settings-input {
+.new-article-input {
     width: 100%;
     font-size: 19px;
     padding: 7px 14px;
@@ -17,64 +17,42 @@
     border-radius: 5px;
     border: 1px solid #d0d0d0;
 }
-.settings-area {
+.article-title {
+    font-size: 24px;
+}
+.new-article-area {
     max-width: 100%;
     min-width: 100%;
+    height: 180px;
     font-size: 19px;
     padding: 7px 14px;
     margin-top: 15px;
     border-radius: 5px;
     border: 1px solid #d0d0d0;
 }
-.settings-input:focus {
+.new-article-input:focus {
     border: 1px solid cornflowerblue;
 }
-.settings-area:focus {
+.new-article-area:focus {
     border: 1px solid cornflowerblue;
 }
 
-/*button-update*/
-.settings-btn-wrapper {
+/*button-publish-new-article*/
+.new-article-btn-wrapper {
     text-align: right;
     width: 100%;
     padding: 15px 0;
-    border-bottom: 1px solid #d0d0d0;
 }
-.settings-btn-update {
+.new-article-btn-update {
     background-color: limegreen;
     padding: 7px 18px;
     border-radius: 7px;
     border: solid 1px limegreen;
     color: white;
 }
-.settings-btn-update:hover {
+.new-article-btn-update:hover {
     background-color: green;
 }
-.settings-btn-update:active {
+.new-article-btn-update:active {
     background-color: darkgreen;
-}
-
-
-/*button-logout*/
-.settings-btn-2-wrapper {
-    text-align: left;
-    width: 100%;
-    margin-top: 15px;
-}
-.settings-btn-logout {
-    background-color: rgba(1, 1, 1, 0);
-    padding: 4px 12px;
-    border-radius: 7px;
-    border: solid 1px red;
-    font-size: 17px;
-    color: red;
-}
-.settings-btn-logout:hover {
-    background-color: red;
-    color: white;
-}
-.settings-btn-logout:active {
-    border: solid 1px darkred;
-    background-color: darkred;
-    color: white;
 }
