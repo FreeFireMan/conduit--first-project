@@ -20,10 +20,10 @@ export default function Header() {
                          to='/'>Home</NavLink>
                 <NavLink onClick={() => dispatch(choseNavLink('new'))}
                          className={navLinkActive === 'new' ? "nav-link nav-act" : 'nav-link'}
-                         to='/login'>New Article</NavLink>
+                         to='/editor'>New Article</NavLink>
                 <NavLink onClick={() => dispatch(choseNavLink('settings'))}
                          className={navLinkActive === 'settings' ? "nav-link nav-act" : 'nav-link'}
-                         to='/register'>Settings</NavLink>
+                         to='/settings'>Settings</NavLink>
                 <NavLink onClick={() => dispatch(choseNavLink('profile'))}
                          className={navLinkActive === 'profile' ? "nav-link nav-act" : 'nav-link'}
                          to='/profile/feden2906'>feden2906</NavLink>

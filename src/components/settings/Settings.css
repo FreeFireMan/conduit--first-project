@@ -1,0 +1,77 @@
+/*settings-form*/
+.settings-form {
+    text-align: center;
+    font-size: 22px;
+    width: 70%;
+    max-width: 750px;
+    min-width: 400px;
+    min-height: 84vh;
+    margin: auto;
+    padding: 20px;
+}
+.settings-input {
+    width: 100%;
+    font-size: 19px;
+    padding: 7px 14px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+}
+.settings-area {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 19px;
+    padding: 7px 14px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+}
+.settings-input:focus {
+    border: 1px solid cornflowerblue;
+}
+
+/*button-update*/
+.settings-btn-wrapper {
+    text-align: right;
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid #d0d0d0;
+}
+.settings-btn-update {
+    background-color: limegreen;
+    padding: 7px 18px;
+    border-radius: 7px;
+    border: solid 1px limegreen;
+    color: white;
+}
+.settings-btn-update:hover {
+    background-color: green;
+}
+.settings-btn-update:active {
+    background-color: darkgreen;
+}
+
+
+/*button-logout*/
+.settings-btn-2-wrapper {
+    text-align: left;
+    width: 100%;
+    margin-top: 15px;
+}
+.settings-btn-logout {
+    background-color: rgba(1, 1, 1, 0);
+    padding: 4px 12px;
+    border-radius: 7px;
+    border: solid 1px red;
+    font-size: 17px;
+    color: red;
+}
+.settings-btn-logout:hover {
+    background-color: red;
+    color: white;
+}
+.settings-btn-logout:active {
+    border: solid 1px darkred;
+    background-color: darkred;
+    color: white;
+}

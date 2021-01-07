@@ -6,6 +6,7 @@ import SignUp from "./components/sign-up/SignUp";
 import Home from "./components/home/Home";
 import PostFull from "./components/post-full/PostFull";
 import UserProfile from "./components/user-profile/UserProfile";
+import Settings from "./components/settings/Settings";
 
 
 export default () => {
@@ -13,7 +14,7 @@ export default () => {
   return (
       <Switch>
         <Route path={`/profile/:username`} component={UserProfile}/>
-
+        <Route path={`/settings`} component={Settings}/>
 
         <Route path={`/article/:linkToFullPost`} component={PostFull}/>
         <Route path={`/page/:numberPage`} component={Home}/>
