@@ -16,6 +16,7 @@ export default function Home() {
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
 
   const [popularTag, setPopularTag] = useState([])
+  const {articles} = useSelector(({post: {posts}}) => posts)
 
   useEffect(() => {
     doFetch('/api/tags')
@@ -47,7 +48,7 @@ export default function Home() {
             {active === 'your' && loggedIn && <Posts/>}
             {active === 'global' && <Posts/>}
 
-            {active === 'global' && <Pagination/>}
+            {active === 'global' && !!articles && <Pagination/>}
           </div>
 
 
@@ -65,3 +66,5 @@ export default function Home() {
       </div>
   );
 }
+
+// '/api/articles?tag=HuManIty&limit=10&offset=0'
