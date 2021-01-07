@@ -1,10 +1,12 @@
 import './Post.css'
 import {Link} from "react-router-dom";
+import {choseNavLink} from "../../redux/action-creators";
+import {useDispatch} from "react-redux";
 
 export default function Post(
     {post: {author: {image, username}, body, createdAt, favoritesCount, slug, tagList, title}}
 ) {
-
+  const dispatch = useDispatch()
   const month = new Date(createdAt).getMonth() + 1
   const day = new Date(createdAt).getDay()
   const year = new Date(createdAt).getFullYear()
@@ -27,7 +29,7 @@ export default function Post(
         <h3>{title}</h3>
         <p className='post-body'>{body}</p>
         <div className='post-all-info-wrapper'>
-          <Link className='post-all-info' to={`/article/${slug}`}>Read more...</Link>
+          <Link onClick={() => dispatch(choseNavLink(''))} className='post-all-info' to={`/article/${slug}`}>Read more...</Link>
           <div className='post-tag-wrapper'>
             {tagList.map((item, i) => <div key={i} className='post-tag'>{item}</div>)}
           </div>

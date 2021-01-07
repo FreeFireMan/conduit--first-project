@@ -107,7 +107,6 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                 </div>
             }
 
-            <Pagination/>
           </div>
 
           <FooterPage/>

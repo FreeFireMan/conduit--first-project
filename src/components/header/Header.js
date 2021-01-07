@@ -12,7 +12,9 @@ export default function Header() {
   return (
       <div className='header-wrapper'>
         <div className='navbar-wrapper'>
-          <NavLink to='/' className='logo'><p><b>conduit</b></p></NavLink>
+          <NavLink onClick={() => dispatch(choseNavLink('home'))}
+                   to='/' className='logo'><p><b>conduit</b></p>
+          </NavLink>
           {loggedIn
               ? <div className='navbar'>
                 <NavLink onClick={() => dispatch(choseNavLink('home'))}
