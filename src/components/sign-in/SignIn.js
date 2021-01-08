@@ -12,7 +12,7 @@ export default function SignIn() {
 
   const ClickSignIn = () => {
     const data = {user: {email, password}}
-    postFetch('/api/users', data)
+    postFetch('/api/users/login', data)
         .then(r => console.log(r))
   }
 

@@ -1,5 +1,4 @@
-import {CHOSE_NAV_LINK, CHOSE_TAG, SHOW_FEED} from "../action-types";
-import doFetch from "../../services/doFetch";
+import {CHOSE_NAV_LINK} from "../action-types";
 
 const initialState = {navLinkActive: "home", postsChosenTag: false}
 
