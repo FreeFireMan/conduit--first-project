@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {ClickSignIn, InputValueEmail, InputValuePass} from "../../redux/action-creators";
 import FooterPage from "../footer-page/FooterPage";
+import Error from "../error/Error";
 
 export default function SignIn() {
 
@@ -16,6 +17,9 @@ export default function SignIn() {
 
             <p className='sign-title'>Sign in</p>
             <Link className='sign-link' to='/register'>Need an account?</Link>
+            <div className='errors-wrapper'>
+              <Error/>
+            </div>
             <input onChange={(e) => dispatch(InputValueEmail(e.currentTarget.value))}
                    className='sign-input' type='email' placeholder='Email'/>
             <input onChange={(e) => dispatch(InputValuePass(e.currentTarget.value))}

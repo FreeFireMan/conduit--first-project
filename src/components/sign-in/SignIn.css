@@ -13,10 +13,10 @@
     align-items: center;
 
 }
+
 .sign-title {
     font-size: 35px;
 }
-
 .sign-link {
     color: limegreen;
     margin-bottom: 20px;
@@ -24,6 +24,12 @@
 }
 .sign-link:hover {
     color: green;
+}
+
+.errors-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: left;
 }
 
 .sign-input{
@@ -54,4 +60,3 @@
     cursor: pointer;
     background-color: green;
 }
-
