@@ -1,6 +1,7 @@
 export const SHOW_FEED = 'SHOW_FEED'
 
 export const GET_GLOBAL_POSTS = 'GET_GLOBAL_POSTS'
+export const GET_CHOSEN_TAG_POSTS = 'GET_CHOSEN_TAG_POSTS'
 export const GET_ONE_POST = 'GET_ONE_POST'
 export const CHOSE_TAG = 'CHOSE_TAG'
 

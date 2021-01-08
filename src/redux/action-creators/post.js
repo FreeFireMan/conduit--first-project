@@ -1,7 +1,7 @@
 import {
   CHOSE_TAG,
   FAVORITE_CHOSEN_ARTICLE,
-  FOLLOW_CHOSEN_USER,
+  FOLLOW_CHOSEN_USER, GET_CHOSEN_TAG_POSTS,
   GET_GLOBAL_POSTS,
   GET_ONE_POST,
   SET_ACTIVE_PAGINATION,
@@ -11,6 +11,7 @@ import {
 export const showFeed = (value) => ({type: SHOW_FEED, payload: value})
 
 export const getGlobalPosts = (value) => ({type: GET_GLOBAL_POSTS, payload: value})
+export const getChosenTagPosts = (value) => ({type: GET_CHOSEN_TAG_POSTS, payload: value})
 export const getChosenPost = (value) => ({type: GET_ONE_POST, payload: value})
 export const choseTag = (value) => ({type: CHOSE_TAG, payload: value})
 

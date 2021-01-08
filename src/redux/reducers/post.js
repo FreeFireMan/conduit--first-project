@@ -1,10 +1,12 @@
 import {
+  CHOSE_TAG,
+  FAVORITE_CHOSEN_ARTICLE,
+  FOLLOW_CHOSEN_USER,
+  GET_CHOSEN_TAG_POSTS,
   GET_GLOBAL_POSTS,
   GET_ONE_POST,
-  FOLLOW_CHOSEN_USER,
-  FAVORITE_CHOSEN_ARTICLE,
   SET_ACTIVE_PAGINATION,
-  CHOSE_TAG, SHOW_FEED
+  SHOW_FEED
 } from "../action-types";
 
 const initialState = {active: "global", posts: {}, chosenTagPosts: {}, chosenPost: {}, pagination: 0, paginationActive: 1, chosenTag: false}
@@ -16,11 +18,16 @@ export const postReducer = (state = initialState, action) => {
   switch (type) {
 
     case SHOW_FEED: {
-      return {...state, active: payload}
+      return {...state, active: payload, chosenTag: false}
     }
 
     case GET_GLOBAL_POSTS: {
       return {...state, posts: payload, pagination: payload.articlesCount / payload.articles.length }
+    }
+
+    case GET_CHOSEN_TAG_POSTS: {
+      return {...state, chosenTag: payload.tag, chosenTagPosts: payload.posts, active: "chosen",
+              pagination: payload.posts.articlesCount / payload.posts.articles.length }
     }
 
     case GET_ONE_POST: {

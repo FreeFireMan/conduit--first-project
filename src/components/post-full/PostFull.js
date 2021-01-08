@@ -6,7 +6,6 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Loading from "../../services/Loading";
 import FooterPage from "../footer-page/FooterPage";
-import Pagination from "../pagination/Pagination";
 
 function PostFull({match: {params: {linkToFullPost}}}) {
 
