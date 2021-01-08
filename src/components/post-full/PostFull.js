@@ -39,7 +39,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
             <h1><b>title</b></h1>
             <div className='chosen-post-header'>
               <div className='chosen-post-user-info'>
-                <img className='chosen-user-photo' src={`${image}`} alt='аватар'/>
+                <img className='chosen-user-photo' src={`${image}`}/>
                 <div>
                   <p className='chosen-post-user-name'>{username}</p>
                   <p className='chosen-post-user-date'>{`${month}.${day}, ${year}`}</p>
@@ -69,7 +69,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
 
             <div className='chosen-post-user-wrapper'>
               <div className='chosen-post-user-info'>
-                <img className='chosen-user-photo' src={`${image}`} alt='аватар'/>
+                <img className='chosen-user-photo' src={`${image}`}/>
                 <div>
                   <p className='chosen-post-user-name name2'>{username}</p>
                   <p className='chosen-post-user-date'>{`${month}.${day}, ${year}`}</p>
@@ -93,7 +93,7 @@ function PostFull({match: {params: {linkToFullPost}}}) {
                   <textarea className='input-comment' placeholder='Write a comment...'/>
                   <div className='comment-btn-wrapper'>
                     <div className='comment-btn-wrapper-2'>
-                      <img src='../../img/default.jpg' className='chosen-user-photo' alt='avatar'/>
+                      <img src='../../img/default.jpg' className='chosen-user-photo'/>
                       <input type="button" value='Post Comment' className='post-comment-btn'/>
                       {/*TODO*/}
                     </div>

@@ -1,6 +1,6 @@
 import {IS_LOG_IN, IS_LOG_OUT} from "../action-types";
 
-const initialState = {loggedIn: true, }
+const initialState = {loggedIn: false}
 
 export const userReducer = (state= initialState, action) => {
 

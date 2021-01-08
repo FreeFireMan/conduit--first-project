@@ -15,7 +15,7 @@ export default function Post(
       <div className='post-wrapper'>
         <div className='post-header'>
           <div className='post-user-info'>
-            <img className='user-photo' src={`${image}`} alt='аватар'/>
+            <img className='user-photo' src={`${image}`}/>
             <div>
               <p className='post-user-name'>{username}</p>
               <p className='post-user-date'>{`${month}.${day}, ${year}`}</p>
