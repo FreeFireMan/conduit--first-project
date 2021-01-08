@@ -1,3 +1,0 @@
-export const INPUT_VALUE_EMAIL = 'INPUT_VALUE_EMAIL'
-export const INPUT_VALUE_PASS = 'INPUT_VALUE_PASS'
-export const CLICK_SIGN_IN = 'CLICK_SIGN_IN'

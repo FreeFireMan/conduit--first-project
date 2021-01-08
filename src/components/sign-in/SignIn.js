@@ -1,13 +1,20 @@
 import './SignIn.css'
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ClickSignIn, InputValueEmail, InputValuePass} from "../../redux/action-creators";
 import FooterPage from "../footer-page/FooterPage";
 import Error from "../error/Error";
+import {useState} from "react";
+import postFetch from "../../services/postFetch";
 
 export default function SignIn() {
 
-  const dispatch = useDispatch()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const ClickSignIn = () => {
+    const data = {user: {email, password}}
+    postFetch('/api/users', data)
+        .then(r => console.log(r))
+  }
 
   return (
       <div className='modal-wrapper'>
@@ -20,12 +27,12 @@ export default function SignIn() {
             <div className='errors-wrapper'>
               <Error/>
             </div>
-            <input onChange={(e) => dispatch(InputValueEmail(e.currentTarget.value))}
+            <input onChange={(e) => setEmail(e.currentTarget.value)}
                    className='sign-input' type='email' placeholder='Email'/>
-            <input onChange={(e) => dispatch(InputValuePass(e.currentTarget.value))}
+            <input onChange={(e) => setPassword(e.currentTarget.value)}
                    className='sign-input' type='password' placeholder='Password'/>
             <div className='btn-wrapper'>
-              <input onClick={() => dispatch(ClickSignIn())} className='sign-btn' type="button" value='Sign in'/>
+              <input onClick={() => ClickSignIn()} className='sign-btn' type="button" value='Sign in'/>
             </div>
           </div>
         </div>

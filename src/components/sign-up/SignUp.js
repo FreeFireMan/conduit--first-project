@@ -1,16 +1,19 @@
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {
-  ClickSignUp,
-  InputValueRegisterEmail,
-  InputValueRegisterPass,
-  InputValueRegisterUsername
-} from "../../redux/action-creators";
 import FooterPage from "../footer-page/FooterPage";
+import {useState} from "react";
+import postFetch from "../../services/postFetch";
 
 export default function SignUp() {
 
-  const dispatch = useDispatch()
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const ClickSignUp = () => {
+    const data = {user: {email, password, username}}
+    postFetch('/api/users', data)
+        .then(r => console.log(r))
+  }
 
   return (
       <div className='modal-wrapper'>
@@ -20,14 +23,14 @@ export default function SignUp() {
 
             <p className='sign-title'>Sign up</p>
             <Link className='sign-link' to='/login'>Have an account?</Link>
-            <input onChange={(e) => dispatch(InputValueRegisterUsername(e.currentTarget.value))}
+            <input onChange={(e) => setUsername(e.currentTarget.value)}
                    className='sign-input' type='text' placeholder='Username'/>
-            <input onChange={(e) => dispatch(InputValueRegisterEmail(e.currentTarget.value))}
+            <input onChange={(e) => setEmail(e.currentTarget.value)}
                    className='sign-input' type='email' placeholder='Email'/>
-            <input onChange={(e) => dispatch(InputValueRegisterPass(e.currentTarget.value))}
+            <input onChange={(e) => setPassword(e.currentTarget.value)}
                    className='sign-input' type='password' placeholder='Password'/>
             <div className='btn-wrapper'>
-              <input onClick={() => dispatch(ClickSignUp())} className='sign-btn' type="button" value='Sign up'/>
+              <input onClick={() => ClickSignUp()} className='sign-btn' type="button" value='Sign up'/>
             </div>
           </div>
         </div>
