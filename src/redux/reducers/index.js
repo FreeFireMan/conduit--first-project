@@ -7,5 +7,6 @@ import {postReducer} from "./post";
 export const reducer = combineReducers({
   homePage: homePageReducer,
   user: userReducer,
-  post: postReducer
+  post: postReducer,
+  error: errorReducer
 })
