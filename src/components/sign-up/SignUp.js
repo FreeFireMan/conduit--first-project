@@ -24,9 +24,11 @@ export default function SignUp() {
 
             <p className='sign-title'>Sign up</p>
             <Link className='sign-link' to='/login'>Have an account?</Link>
+
             <div className='errors-wrapper'>
               <Error/>
             </div>
+
             <input onChange={(e) => setUsername(e.currentTarget.value)}
                    className='sign-input' type='text' placeholder='Username'/>
             <input onChange={(e) => setEmail(e.currentTarget.value)}
