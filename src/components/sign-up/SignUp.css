@@ -26,6 +26,12 @@
     color: green;
 }
 
+.errors-wrapper {
+    width: 450px;
+    display: flex;
+    justify-content: left;
+}
+
 .sign-input{
     width: 450px;
     margin-top: 15px;
