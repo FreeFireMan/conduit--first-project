@@ -5,11 +5,11 @@ export const errorReducer = (state = initialState, action) => {
 
   switch (type) {
 
-    case AAAA: {
+    case 'AAAA': {
       return {...state}
     }
 
-    case AAAA: {
+    case 'BBBB': {
       return {...state}
     }
 
