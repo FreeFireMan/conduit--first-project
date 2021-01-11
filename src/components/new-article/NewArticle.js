@@ -7,10 +7,12 @@ export default function NewArticle() {
 
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
 
+  if (!loggedIn) {
+    return <Redirect to="/"/>
+  }
+
   return (
       <div>
-
-        {loggedIn || <Redirect to={'/login'}/>}
 
         <div className='new-article-form'>
 

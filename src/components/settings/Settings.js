@@ -9,10 +9,12 @@ export default function Settings() {
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   const dispatch = useDispatch()
 
+  if (!loggedIn) {
+    return <Redirect to="/"/>
+  }
+
   return (
       <div>
-
-        {loggedIn || <Redirect to={'/login'}/>}
 
         <div className='settings-form'>
           <h1>Your Settings</h1>
