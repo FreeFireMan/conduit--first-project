@@ -1,10 +1,17 @@
 import './NewArticle.css'
 import FooterPage from "../footer-page/FooterPage";
+import {Redirect} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function NewArticle() {
 
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+
   return (
       <div>
+
+        {loggedIn || <Redirect to={'/login'}/>}
+
         <div className='new-article-form'>
 
           <input type="text" className='new-article-input article-title' placeholder='Article Title'/>

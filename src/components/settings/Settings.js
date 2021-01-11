@@ -1,10 +1,19 @@
 import './Settings.css'
 import FooterPage from "../footer-page/FooterPage";
+import {useDispatch, useSelector} from "react-redux";
+import {IsLogOut} from "../../redux/action-creators";
+import {Redirect} from "react-router-dom";
 
 export default function Settings() {
 
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  const dispatch = useDispatch()
+
   return (
       <div>
+
+        {loggedIn || <Redirect to={'/login'}/>}
+
         <div className='settings-form'>
           <h1>Your Settings</h1>
           <input type="text" className='settings-input' placeholder='URL of profile picture'/>
@@ -17,7 +26,8 @@ export default function Settings() {
             <input type='button' className='settings-btn-update' value='Update Settings'/>
           </div>
           <div className='settings-btn-2-wrapper'>
-            <input type='button' className='settings-btn-logout' value='Or click here to logout'/>
+            <input onClick={() => dispatch(IsLogOut())} type='button' className='settings-btn-logout'
+                   value='Or click here to logout'/>
           </div>
 
         </div>

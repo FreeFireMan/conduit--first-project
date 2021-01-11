@@ -1,20 +1,26 @@
-import {Link, withRouter} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import FooterPage from "../footer-page/FooterPage";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import postFetch from "../../services/postFetch";
 import Error from "../error/Error";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {IsLogIn} from "../../redux/action-creators";
 
-function SignUp({history}) {
 
-  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
-  loggedIn && history.push("/")
+function SignUp() {
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
   const [errors, setErrors] = useState('')
+
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
+  }, [dispatch])
+
 
   const ClickSignUp = () => {
     const option = {
@@ -25,9 +31,7 @@ function SignUp({history}) {
     }
     postFetch('/api/users', option)
         .then(({data: {user}}) => {
-          console.log(user)
-          // localStorage.setItem("user", JSON.stringify(user))
-          // localStorage.setItem("token", JSON.stringify(user.token))
+          localStorage.setItem("token", JSON.stringify(user.token))
         })
         .catch(({response: {data: {errors}}}) => {
           setErrors(errors)
@@ -36,6 +40,8 @@ function SignUp({history}) {
 
   return (
       <div className='modal-wrapper'>
+
+        {loggedIn && <Redirect to="/"/>}
 
         <div className='sign'>
           <div className='sign-form'>
@@ -65,4 +71,4 @@ function SignUp({history}) {
   );
 }
 
-export default withRouter(SignUp)
+export default SignUp

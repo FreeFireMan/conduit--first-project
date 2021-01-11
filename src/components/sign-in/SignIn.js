@@ -1,47 +1,46 @@
 import './SignIn.css'
-import {
-  BrowserRouter as Router, Switch, Route, Link, withRouter
-} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import FooterPage from "../footer-page/FooterPage";
 import Error from "../error/Error";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import postFetch from "../../services/postFetch";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {IsLogIn} from "../../redux/action-creators";
 
 
-function SignIn({history}) {
+function SignIn() {
+
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState('')
+  const [email, setEmail] = useState('')
 
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
-  loggedIn && history.push("/")
+  const dispatch = useDispatch()
 
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [errors, setErrors] = useState('')
+  useEffect(() => {
+    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
+  },[dispatch])
 
   const ClickSignIn = () => {
 
-    const option ={
+    const option = {
       method: "post",
-      data : {
-        user: {email, password}}
+      data: {user: {email, password}}
     }
 
     postFetch('/api/users/login', option)
-                .then(({data:{user}}) =>{
-
-          localStorage.setItem("user", JSON.stringify(user))
+        .then(({data: {user}}) => {
           localStorage.setItem("token", JSON.stringify(user.token))
         })
-        .catch(({response:{data:{errors}}}) => {
+        .catch(({response: {data: {errors}}}) => {
           setErrors(errors)
         })
-
   }
 
   return (
       <div className='modal-wrapper'>
+
+        {loggedIn && <Redirect to="/"/>}
 
         <div className='sign'>
           <div className='sign-form'>
@@ -68,4 +67,5 @@ function SignIn({history}) {
       </div>
   );
 }
-export default  withRouter(SignIn)
+
+export default SignIn

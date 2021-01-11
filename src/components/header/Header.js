@@ -8,10 +8,10 @@ export default function Header() {
 
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-    dispatch(IsLogIn(JSON.parse(localStorage.getItem("user"))))
-    // dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
-  // },[dispatch])
+  useEffect(() => {
+  //   dispatch(IsLogIn(JSON.parse(localStorage.getItem("user"))))
+    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
+  },[dispatch])
 
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   const navLinkActive = useSelector(({homePage: {navLinkActive}}) => navLinkActive)
