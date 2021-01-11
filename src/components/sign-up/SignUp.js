@@ -38,14 +38,12 @@ function SignUp() {
           setErrors(errors)
         })
   }
-  if(loggedIn){
+  if (loggedIn) {
     return <Redirect to="/"/>
   }
 
   return (
       <div className='modal-wrapper'>
-
-        {loggedIn && <Redirect to="/"/>}
 
         <div className='sign'>
           <div className='sign-form'>
