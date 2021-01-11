@@ -1,3 +1,4 @@
 
 export const IS_LOG_IN = 'IS_LOG_IN'
 export const IS_LOG_OUT = 'IS_LOG_OUT'
+export const GET_TOKEN_FROM_LOCAL_STORRIGE = 'GET_TOKEN_FROM_LOCAL_STORRIGE'

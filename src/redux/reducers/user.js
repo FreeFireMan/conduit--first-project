@@ -1,6 +1,6 @@
-import {IS_LOG_IN, IS_LOG_OUT} from "../action-types";
+import {GET_TOKEN_FROM_LOCAL_STORRIGE, IS_LOG_IN, IS_LOG_OUT} from "../action-types";
 
-const initialState = {loggedIn: false, token: ''}
+const initialState = {loggedIn: false, token: '', user: ''}
 
 export const userReducer = (state = initialState, action) => {
 
@@ -8,16 +8,19 @@ export const userReducer = (state = initialState, action) => {
 
   switch (type) {
 
+    case GET_TOKEN_FROM_LOCAL_STORRIGE: {
+      return {...state, token: payload}
+    }
+
     case IS_LOG_IN: {
-      console.log(state.loggedIn)
       return payload
-             ? {...state, loggedIn: true, token: payload}
+             ? {...state, loggedIn: true, token: payload.token, user: payload}
              : {...state, loggedIn: false}
     }
 
     case IS_LOG_OUT: {
-      console.log(state.loggedIn)
-      return {...state, loggedIn: false}
+      localStorage.clear()
+      return {...state, loggedIn: false, token: '', user: ''}
     }
 
     default: {

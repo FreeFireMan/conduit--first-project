@@ -8,13 +8,10 @@ export default function Header() {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
-  },[dispatch])
-
-  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  const {loggedIn, user} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
   const navLinkActive = useSelector(({homePage: {navLinkActive}}) => navLinkActive)
-  console.log(loggedIn)
+
+  console.log(user)
   return (
       <div className='header-wrapper'>
         <div className='navbar-wrapper'>
@@ -34,7 +31,7 @@ export default function Header() {
                          to='/settings'>Settings</NavLink>
                 <NavLink onClick={() => dispatch(choseNavLink('profile'))}
                          className={navLinkActive === 'profile' ? "nav-link nav-act" : 'nav-link'}
-                         to='/profile/feden2906'>feden2906</NavLink>
+                         to='/profile/feden2906'>{user.username}</NavLink>
               </div>
               : <div className='navbar'>
                 <NavLink onClick={() => dispatch(choseNavLink('home'))}

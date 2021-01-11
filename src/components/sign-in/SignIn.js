@@ -5,7 +5,7 @@ import Error from "../error/Error";
 import {useEffect, useState} from "react";
 import postFetch from "../../services/postFetch";
 import {useDispatch, useSelector} from "react-redux";
-import {IsLogIn} from "../../redux/action-creators";
+import {getTokenFromLocalStorrige, IsLogIn} from "../../redux/action-creators";
 
 
 function SignIn() {
@@ -18,7 +18,7 @@ function SignIn() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
+    dispatch(getTokenFromLocalStorrige(localStorage.getItem("token")))
   },[dispatch])
 
   const ClickSignIn = () => {
@@ -31,16 +31,19 @@ function SignIn() {
     postFetch('/api/users/login', option)
         .then(({data: {user}}) => {
           localStorage.setItem("token", JSON.stringify(user.token))
+          dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {
           setErrors(errors)
         })
   }
+  if(loggedIn){
+    return <Redirect to="/"/>
+  }
+
 
   return (
       <div className='modal-wrapper'>
-
-        {loggedIn && <Redirect to="/"/>}
 
         <div className='sign'>
           <div className='sign-form'>

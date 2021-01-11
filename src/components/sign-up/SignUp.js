@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import postFetch from "../../services/postFetch";
 import Error from "../error/Error";
 import {useDispatch, useSelector} from "react-redux";
-import {IsLogIn} from "../../redux/action-creators";
+import {getTokenFromLocalStorrige, IsLogIn} from "../../redux/action-creators";
 
 
 function SignUp() {
@@ -18,9 +18,9 @@ function SignUp() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
+    dispatch(getTokenFromLocalStorrige(localStorage.getItem("token")))
+    //TODO
   }, [dispatch])
-
 
   const ClickSignUp = () => {
     const option = {
@@ -32,10 +32,14 @@ function SignUp() {
     postFetch('/api/users', option)
         .then(({data: {user}}) => {
           localStorage.setItem("token", JSON.stringify(user.token))
+          dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {
           setErrors(errors)
         })
+  }
+  if(loggedIn){
+    return <Redirect to="/"/>
   }
 
   return (
