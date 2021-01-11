@@ -11,6 +11,7 @@ ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
         <Router>
+          {/* TODO - add wrapper component to App */}
           <App/>
         </Router>
       </Provider>
