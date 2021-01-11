@@ -10,6 +10,7 @@ export default function Header() {
 
   useEffect(() => {
     const token = localStorage.getItem("token")
+    console.log(token)
     if(token) {
       dispatch(getTokenFromLocalStorrige(JSON.parse(token)))
     }
