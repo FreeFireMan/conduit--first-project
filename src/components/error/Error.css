@@ -1,4 +1,5 @@
-.errors {
-    font-size: 20px;
+li {
+    margin: -2px;
+    font-size: 17px;
     color: darkred;
 }
