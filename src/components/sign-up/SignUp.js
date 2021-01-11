@@ -10,10 +10,15 @@ export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [errors, setErrors] = useState('')
+
   const ClickSignUp = () => {
     const data = {user: {email, password, username}}
     postFetch('/api/users', data)
-        .then(r => console.log(r))
+        .then(response => {
+          const {errors} = response
+          setErrors(errors)
+        })
   }
 
   return (
@@ -26,7 +31,7 @@ export default function SignUp() {
             <Link className='sign-link' to='/login'>Have an account?</Link>
 
             <div className='errors-wrapper'>
-              <Error/>
+              {errors && <Error errors={errors}/>}
             </div>
 
             <input onChange={(e) => setUsername(e.currentTarget.value)}
