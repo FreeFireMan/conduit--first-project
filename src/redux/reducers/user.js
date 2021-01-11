@@ -9,13 +9,14 @@ export const userReducer = (state = initialState, action) => {
   switch (type) {
 
     case IS_LOG_IN: {
-      console.log( state)
+      console.log(state.loggedIn)
       return payload
              ? {...state, loggedIn: true, token: payload}
              : {...state, loggedIn: false}
     }
 
     case IS_LOG_OUT: {
+      console.log(state.loggedIn)
       return {...state, loggedIn: false}
     }
 

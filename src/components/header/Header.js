@@ -9,7 +9,6 @@ export default function Header() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-  //   dispatch(IsLogIn(JSON.parse(localStorage.getItem("user"))))
     dispatch(IsLogIn(JSON.parse(localStorage.getItem("token"))))
   },[dispatch])
 

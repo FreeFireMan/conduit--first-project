@@ -9,6 +9,10 @@ export default function Settings() {
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   const dispatch = useDispatch()
 
+  const clickLogOut = () => {
+    localStorage.clear()
+    dispatch(IsLogOut())
+  }
   return (
       <div>
 
@@ -26,8 +30,7 @@ export default function Settings() {
             <input type='button' className='settings-btn-update' value='Update Settings'/>
           </div>
           <div className='settings-btn-2-wrapper'>
-            <input onClick={() => dispatch(IsLogOut())} type='button' className='settings-btn-logout'
-                   value='Or click here to logout'/>
+            <input onClick={() => clickLogOut()} type='button' className='settings-btn-logout' value='Or click here to logout'/>
           </div>
 
         </div>
