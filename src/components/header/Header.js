@@ -1,17 +1,25 @@
 import './Header.css'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {choseNavLink, IsLogIn} from "../../redux/action-creators";
+import {choseNavLink, getTokenFromLocalStorrige, IsLogIn} from "../../redux/action-creators";
 import {useEffect} from "react";
 
 export default function Header() {
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if(token) {
+      dispatch(getTokenFromLocalStorrige(JSON.parse(token)))
+    }
+  }, [dispatch])
+//feden1234567890@gmail.com
+
   const {loggedIn, user} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
   const navLinkActive = useSelector(({homePage: {navLinkActive}}) => navLinkActive)
 
-  console.log(user)
+
   return (
       <div className='header-wrapper'>
         <div className='navbar-wrapper'>
