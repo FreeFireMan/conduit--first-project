@@ -1,12 +1,13 @@
-export default function postFetch (url, data){
-  const baseUrl = 'https://conduit.productionready.io'
+import axios from "axios";
 
-  return fetch(baseUrl + url,
-      {
-        method: 'POST',
-        headers: {"authorization": ""},
-        body: JSON.stringify(data)
-        }
-        )
-            .then(response => response.json())
+export default function postFetch(url, option) {
+  const baseUrl = 'https://conduit.productionready.io'
+  const reqOption = {
+    ...option,
+  }
+
+  return axios(baseUrl + url, reqOption )
+      .then(response => response)
 }
+
+// feden1234567890@gmail.com

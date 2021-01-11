@@ -1,4 +1,4 @@
 import {IS_LOG_IN, IS_LOG_OUT} from "../action-types";
 
-export const IsLogIn = () => ({type: IS_LOG_IN})
+export const IsLogIn = (user) => ({type: IS_LOG_IN, payload: user})
 export const IsLogOut = () => ({type: IS_LOG_OUT})

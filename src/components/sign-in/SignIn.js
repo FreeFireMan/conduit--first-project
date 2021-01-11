@@ -1,11 +1,19 @@
 import './SignIn.css'
-import {Link} from "react-router-dom";
+import {
+  BrowserRouter as Router, Switch, Route, Link, withRouter
+} from "react-router-dom";
 import FooterPage from "../footer-page/FooterPage";
 import Error from "../error/Error";
 import {useState} from "react";
 import postFetch from "../../services/postFetch";
+import {useSelector} from "react-redux";
 
-export default function SignIn() {
+
+function SignIn({history}) {
+
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  loggedIn && history.push("/")
+
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,12 +21,23 @@ export default function SignIn() {
   const [errors, setErrors] = useState('')
 
   const ClickSignIn = () => {
-    const data = {user: {email, password}}
-    postFetch('/api/users/login', data)
-        .then(response => {
-          const {errors} = response
+
+    const option ={
+      method: "post",
+      data : {
+        user: {email, password}}
+    }
+
+    postFetch('/api/users/login', option)
+                .then(({data:{user}}) =>{
+
+          localStorage.setItem("user", JSON.stringify(user))
+          localStorage.setItem("token", JSON.stringify(user.token))
+        })
+        .catch(({response:{data:{errors}}}) => {
           setErrors(errors)
         })
+
   }
 
   return (
@@ -49,3 +68,4 @@ export default function SignIn() {
       </div>
   );
 }
+export default  withRouter(SignIn)

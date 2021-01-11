@@ -1,10 +1,14 @@
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import FooterPage from "../footer-page/FooterPage";
 import {useState} from "react";
 import postFetch from "../../services/postFetch";
 import Error from "../error/Error";
+import {useSelector} from "react-redux";
 
-export default function SignUp() {
+function SignUp({history}) {
+
+  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  loggedIn && history.push("/")
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -13,10 +17,19 @@ export default function SignUp() {
   const [errors, setErrors] = useState('')
 
   const ClickSignUp = () => {
-    const data = {user: {email, password, username}}
-    postFetch('/api/users', data)
-        .then(response => {
-          const {errors} = response
+    const option = {
+      method: "post",
+      data: {
+        user: {email, password, username}
+      }
+    }
+    postFetch('/api/users', option)
+        .then(({data: {user}}) => {
+          console.log(user)
+          // localStorage.setItem("user", JSON.stringify(user))
+          // localStorage.setItem("token", JSON.stringify(user.token))
+        })
+        .catch(({response: {data: {errors}}}) => {
           setErrors(errors)
         })
   }
@@ -51,3 +64,5 @@ export default function SignUp() {
       </div>
   );
 }
+
+export default withRouter(SignUp)
