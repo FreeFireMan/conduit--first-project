@@ -8,19 +8,19 @@ import doFetch from "./services/doFetch";
 
 function App() {
 
-  const dispatch = useDispatch()
-  const token = useSelector(({user:{token}}) => token)
-
-
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    if(token) {
-      doFetch(token)
-          .then(r => console.log(r))
-
-      // dispatch(getTokenFromLocalStorrige(token))
-    }
-  }, [dispatch])
+  // const dispatch = useDispatch()
+  // const token = useSelector(({user:{token}}) => token)
+  //
+  //
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //   if(token) {
+  //     doFetch(token)
+  //         .then(r => console.log(r))
+  //
+  //     // dispatch(getTokenFromLocalStorrige(token))
+  //   }
+  // }, [dispatch])
 
 
   return (
