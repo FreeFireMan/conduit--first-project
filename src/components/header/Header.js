@@ -1,21 +1,11 @@
 import './Header.css'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {choseNavLink, getTokenFromLocalStorrige} from "../../redux/action-creators";
-import {useEffect} from "react";
+import {choseNavLink} from "../../redux/action-creators";
 
 export default function Header() {
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    console.log(token)
-    if(token) {
-      dispatch(getTokenFromLocalStorrige(JSON.parse(token)))
-    }
-  }, [dispatch])
-
   const {loggedIn, user} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
   const navLinkActive = useSelector(({homePage: {navLinkActive}}) => navLinkActive)
 

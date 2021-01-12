@@ -17,11 +17,6 @@ function SignUp() {
   const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getTokenFromLocalStorrige(localStorage.getItem("token")))
-    //TODO
-  }, [dispatch])
-
   const ClickSignUp = () => {
     const option = {
       method: "post",
@@ -32,6 +27,7 @@ function SignUp() {
     postFetch('/api/users', option)
         .then(({data: {user}}) => {
           localStorage.setItem("token", JSON.stringify(user.token))
+          localStorage.setItem("user", JSON.stringify(user))
           dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {
