@@ -27,7 +27,6 @@ function SignUp() {
     postFetch('/api/users', option)
         .then(({data: {user}}) => {
           localStorage.setItem("token", JSON.stringify(user.token))
-          localStorage.setItem("user", JSON.stringify(user))
           dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {

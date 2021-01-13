@@ -1,6 +1,6 @@
-import {GET_TOKEN_FROM_LOCAL_STORRIGE, IS_LOG_IN, IS_LOG_OUT} from "../action-types";
+import {GET_ERROR_ON_TOKEN, GET_USER_ON_TOKEN, IS_LOG_IN, IS_LOG_OUT} from "../action-types";
 
-const initialState = {loggedIn: false, token: '', user: ''}
+const initialState = {loggedIn: false, token: '', user: '', error: ''}
 
 export const userReducer = (state = initialState, action) => {
 
@@ -8,8 +8,14 @@ export const userReducer = (state = initialState, action) => {
 
   switch (type) {
 
-    case GET_TOKEN_FROM_LOCAL_STORRIGE: {
-      return {...state, token: payload}
+    case GET_USER_ON_TOKEN: {
+      return {...state, user: payload, token: payload.token, loggedIn: true}
+    }
+
+    case GET_ERROR_ON_TOKEN: {
+      return payload
+        ? {...state, user: '', loggedIn: false, token: '', error: true}
+        : {...state, user: '', loggedIn: false, token: '', error: payload}
     }
 
     case IS_LOG_IN: {

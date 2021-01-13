@@ -6,7 +6,8 @@ export default function postFetch(url, option) {
     ...option,
   }
 
-  return axios(baseUrl + url, reqOption )
+
+  return axios(baseUrl + url, reqOption)
       .then(response => response)
 }
 
