@@ -2,16 +2,18 @@ import './UserProfile.css'
 import FooterPage from "../footer-page/FooterPage";
 import {Link} from "react-router-dom";
 import {showFeed} from "../../redux/action-creators";
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import postFetch from "../../services/postFetch";
 
 export default function UserProfile (){
 
-const dispatch = useDispatch()
-  const active = useSelector(({homePage: {active}}) => active)
+  const dispatch = useDispatch()
+  const active = useSelector(({post: {active}}) => active)
   const {loggedIn, user, user:{image, username, bio}} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
 
-  console.log(user)
+
+
   return (
         <div>
 
@@ -33,6 +35,9 @@ const dispatch = useDispatch()
                     onClick={() => dispatch(showFeed('your'))}
                     className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Favorited Posts</Link>
             </div>
+
+            456789
+
             </body>
 
 

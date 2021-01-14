@@ -65,6 +65,9 @@
     font-size: 13px;
     color: #d0d0d0;
 }
+.post-all-info:hover {
+    color: #7f8186;
+}
 .post-tag-wrapper{
     max-width: 80%;
     display: flex;
