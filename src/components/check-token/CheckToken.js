@@ -5,8 +5,6 @@ import {useDispatch} from "react-redux";
 
 export default function CheckToken({children}) {
 
-  console.log(children)
-
   const dispatch = useDispatch()
 
   useEffect(() => {

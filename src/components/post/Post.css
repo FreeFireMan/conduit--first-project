@@ -66,7 +66,11 @@
     color: #d0d0d0;
 }
 .post-tag-wrapper{
+    max-width: 80%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
 }
 .post-tag{
     border: solid 1px #d0d0d0;
@@ -74,7 +78,7 @@
     color: #d0d0d0;
     font-size: 13px;
     padding: 2px 9px;
-    margin-left: 3px;
+    margin: 2px 3px 0 0;
 }
 .post-tag:hover {
     cursor: pointer;
