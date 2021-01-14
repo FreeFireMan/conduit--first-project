@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import postFetch from "../../services/postFetch";
-import {getErrorOnToken, getUserOnToken} from "../../redux/action-creators";
+import {getErrorOnToken, getUserOnToken, loadingLS} from "../../redux/action-creators";
 import {useDispatch} from "react-redux";
 
 export default function CheckToken({children}) {
@@ -8,6 +8,7 @@ export default function CheckToken({children}) {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(loadingLS())
     const token = localStorage.getItem("token")
 
     if (token) {

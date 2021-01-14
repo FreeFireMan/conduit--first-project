@@ -1,6 +1,6 @@
-import {GET_ERROR_ON_TOKEN, GET_USER_ON_TOKEN, IS_LOG_IN, IS_LOG_OUT} from "../action-types";
+import {GET_ERROR_ON_TOKEN, GET_USER_ON_TOKEN, IS_LOG_IN, IS_LOG_OUT, LOADING_LS} from "../action-types";
 
-const initialState = {loggedIn: false, token: '', user: '', error: ''}
+const initialState = {loggedIn: false, token: '', user: '', error: '', loading: false}
 
 export const userReducer = (state = initialState, action) => {
 
@@ -8,14 +8,18 @@ export const userReducer = (state = initialState, action) => {
 
   switch (type) {
 
+    case LOADING_LS: {
+      return {...state, loading: true}
+    }
+
     case GET_USER_ON_TOKEN: {
-      return {...state, user: payload, token: payload.token, loggedIn: true}
+      return {...state, user: payload, token: payload.token, loggedIn: true, loading: false}
     }
 
     case GET_ERROR_ON_TOKEN: {
       return payload
-        ? {...state, user: '', loggedIn: false, token: '', error: true}
-        : {...state, user: '', loggedIn: false, token: '', error: payload}
+        ? {...state, user: '', loggedIn: false, token: '', error: true, loading: false}
+        : {...state, user: '', loggedIn: false, token: '', error: payload, loading: false}
     }
 
     case IS_LOG_IN: {
