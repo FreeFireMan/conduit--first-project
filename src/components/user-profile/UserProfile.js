@@ -9,17 +9,16 @@ export default function UserProfile (){
 
 const dispatch = useDispatch()
   const active = useSelector(({homePage: {active}}) => active)
-  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  const {loggedIn, user, user:{image, username, bio}} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
 
-
+  console.log(user)
   return (
         <div>
 
             <header className='profile-header'>
-              <img className='profile-photo' src="https://icdn.lenta.ru/images/2020/09/11/13/20200911130707980/pwa_list_sq_1280_b52f104ad4178fa38bd74039fba7d4b2.png" alt="foto"/>
-              {/*TODO*/}
-              <p className='profile-name'><b>{'userName'}</b></p>
-              <p className='profile-bio'>{'bio'}</p>
+              <img className='profile-photo' src={image} alt="foto"/>
+              <p className='profile-name'><b>{username}</b></p>
+              <p className='profile-bio'>{bio}</p>
               <div className='profile-btn-settings-wrapper'>
                   <Link to={'/settings'} className='profile-btn-settings'>Edit Profile Settings</Link>
               </div>
