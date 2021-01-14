@@ -9,8 +9,9 @@ export const userReducer = (state = initialState, action) => {
   switch (type) {
 
     case LOADING_LS: {
-      return {...state, loading: true}
+      return {...state, loading: payload}
     }
+
 
     case GET_USER_ON_TOKEN: {
       return {...state, user: payload, token: payload.token, loggedIn: true, loading: false}
@@ -18,8 +19,8 @@ export const userReducer = (state = initialState, action) => {
 
     case GET_ERROR_ON_TOKEN: {
       return payload
-        ? {...state, user: '', loggedIn: false, token: '', error: true, loading: false}
-        : {...state, user: '', loggedIn: false, token: '', error: payload, loading: false}
+             ? {...state, user: '', loggedIn: false, token: '', error: true, loading: false}
+             : {...state, user: '', loggedIn: false, token: '', error: payload, loading: false}
     }
 
     case IS_LOG_IN: {
