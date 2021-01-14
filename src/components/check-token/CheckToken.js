@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import postFetch from "../../services/postFetch";
-import {getErrorOnToken, getUserOnToken, loadingLS, loadingLSWithoutToken} from "../../redux/action-creators";
+import {getErrorOnToken, getUserOnToken, loadingLS} from "../../redux/action-creators";
 import {useDispatch} from "react-redux";
 
 export default function CheckToken({children}) {

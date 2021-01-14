@@ -1,6 +1,9 @@
 import './Error.css'
+import {useSelector} from "react-redux";
 
-export default function Error({errors}) {
+export default function Error() {
+
+  const errors = useSelector(({user: {errors}}) => errors)
   const errorKey = Object.keys(errors)
 
   return (

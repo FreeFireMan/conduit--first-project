@@ -79,3 +79,9 @@
     background-color: darkred;
     color: white;
 }
+
+.errors-wrapper {
+    width: 450px;
+    display: flex;
+    justify-content: left;
+}
