@@ -13,11 +13,11 @@ export default function UserProfile (){
   const active = useSelector(({post: {active}}) => active)
   const {loggedIn, user, user:{image, username, bio}} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
 
-  const [myPosts, setMyPosts] = useState('')
-  const [favoritedPosts, setFavoritedPosts] = useState('')
-  useEffect(() => {
+  const [posts, setPosts] = useState('')
 
-    dispatch(loadingLS(true))
+
+  useEffect(() => {
+    // dispatch(loadingLS(true))
     let url = ''
     const options = {
     }
@@ -26,11 +26,14 @@ export default function UserProfile (){
     
     postFetch(url, options)
         .then(response => {
-          active === 'global' && setMyPosts(response)
-          active === 'your' && setFavoritedPosts(response)
+          setPosts(response)
         })
-
   }, [active, dispatch, username])
+
+  const clickLink = (name) => {
+    dispatch(showFeed(name))
+    setPosts('')
+  }
 
   return (
         <div>
@@ -46,15 +49,17 @@ export default function UserProfile (){
 
             <body className='profile-body'>
             <div className='profile-nav-link'>
-              <div onClick={() => dispatch(showFeed('global'))}
+              <div onClick={() => clickLink('global')}
                    className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>My Posts
               </div>
               <Link to={loggedIn || '/login'}
-                    onClick={() => dispatch(showFeed('your'))}
+                    onClick={() => clickLink('your')}
                     className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Favorited Posts</Link>
             </div>
 
-            456789
+            <div>
+              {posts ? posts.map : 'Loading...'}
+            </div>
 
             </body>
 
