@@ -1,10 +1,11 @@
 import './UserProfile.css'
 import FooterPage from "../footer-page/FooterPage";
 import {Link} from "react-router-dom";
-import {showFeed} from "../../redux/action-creators";
-import React, {useEffect} from "react";
+import {getFavoritedPosts, getMyPosts, loadingLS, showFeed} from "../../redux/action-creators";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import postFetch from "../../services/postFetch";
+
 
 export default function UserProfile (){
 
@@ -12,7 +13,24 @@ export default function UserProfile (){
   const active = useSelector(({post: {active}}) => active)
   const {loggedIn, user, user:{image, username, bio}} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
 
+  const [myPosts, setMyPosts] = useState('')
+  const [favoritedPosts, setFavoritedPosts] = useState('')
+  useEffect(() => {
 
+    dispatch(loadingLS(true))
+    let url = ''
+    const options = {
+    }
+    if(active === 'global') {url = `/api/articles?author=${username}&limit=10&offset=0`}
+    if(active === 'your') {url = `/api/articles?favorited=${username}&limit=10&offset=0`}
+    
+    postFetch(url, options)
+        .then(response => {
+          active === 'global' && setMyPosts(response)
+          active === 'your' && setFavoritedPosts(response)
+        })
+
+  }, [active, dispatch, username])
 
   return (
         <div>

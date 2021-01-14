@@ -1,7 +1,7 @@
 import {
   CLICK_TO_HEADER_LINK,
   GET_ERROR_ON_TOKEN,
-  GET_ERROR_ON_UPDATE_INFO,
+  GET_ERROR_ON_UPDATE_INFO, GET_FAVORITED_POSTS, GET_MY_POSTS,
   GET_USER_ON_TOKEN,
   IS_LOG_IN,
   IS_LOG_OUT,
@@ -16,4 +16,6 @@ export const updateInfo = (user) => ({type: UPDATE_INFO, payload: user})
 export const getErrorOnUpdateInfo = (value) => ({type: GET_ERROR_ON_UPDATE_INFO, payload: value})
 export const loadingLS = (value) => ({type: LOADING_LS, payload: value})
 export const clickToHeaderLink = () => ({type: CLICK_TO_HEADER_LINK})
+export const getMyPosts = (value) => ({type: GET_MY_POSTS, payload: value})
+export const getFavoritedPosts = (value) => ({type: GET_FAVORITED_POSTS, payload: value})
 

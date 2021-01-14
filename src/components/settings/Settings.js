@@ -24,10 +24,9 @@ export default function Settings() {
   if (!loggedIn) {
     return <Redirect to="/"/>
   }
-
-  // const redirect = () => {
-  //   return <Redirect to='/'/>
-  // }
+  if (save) {
+    return <Redirect to={`/${user.username}`}/>
+  }
 
   const updateSettings = () => {
     const updatedAt = new Date()

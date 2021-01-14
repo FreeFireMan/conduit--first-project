@@ -1,8 +1,7 @@
-
 import {
   CLICK_TO_HEADER_LINK,
   GET_ERROR_ON_TOKEN,
-  GET_ERROR_ON_UPDATE_INFO,
+  GET_ERROR_ON_UPDATE_INFO, GET_FAVORITED_POSTS, GET_MY_POSTS,
   GET_USER_ON_TOKEN,
   IS_LOG_IN,
   IS_LOG_OUT,
@@ -10,7 +9,16 @@ import {
 } from "../action-types";
 
 
-const initialState = {loggedIn: false, token: '', user: '', errors: '', loading: false, save: false}
+const initialState = {
+  loggedIn: false,
+  token: '',
+  user: '',
+  errors: '',
+  loading: false,
+  save: false,
+  myPosts: '',
+  favoritedPost: ''
+}
 
 export const userReducer = (state = initialState, action) => {
 
@@ -29,12 +37,12 @@ export const userReducer = (state = initialState, action) => {
 
     case GET_ERROR_ON_TOKEN: {
       return payload
-             ? {...state, user: '', loggedIn: false, token: '', errors: true, loading: false}
-             : {...state, user: '', loggedIn: false, token: '', errors: payload, loading: false}
+          ? {...state, user: '', loggedIn: false, token: '', errors: true, loading: false}
+          : {...state, user: '', loggedIn: false, token: '', errors: payload, loading: false}
     }
 
     case UPDATE_INFO: {
-      return {...state,token: payload.token, user: payload, errors: false, save: true}
+      return {...state, token: payload.token, user: payload, errors: false, save: true}
     }
 
     case GET_ERROR_ON_UPDATE_INFO: {
@@ -43,8 +51,8 @@ export const userReducer = (state = initialState, action) => {
 
     case IS_LOG_IN: {
       return payload
-             ? {...state, loggedIn: true, token: payload.token, user: payload, errors: false}
-             : {...state, loggedIn: false}
+          ? {...state, loggedIn: true, token: payload.token, user: payload, errors: false}
+          : {...state, loggedIn: false}
     }
 
     case IS_LOG_OUT: {
@@ -54,6 +62,14 @@ export const userReducer = (state = initialState, action) => {
 
     case CLICK_TO_HEADER_LINK: {
       return {...state, save: false, errors: false}
+    }
+
+    case GET_MY_POSTS: {
+      return {...state, myPosts: payload}
+    }
+
+    case GET_FAVORITED_POSTS: {
+      return {...state, favoritedPost: payload}
     }
 
     default: {
