@@ -1,5 +1,5 @@
 import {
-  CHOSE_TAG,
+  CHOSE_TAG, CLEAR_POSTS,
   FAVORITE_CHOSEN_ARTICLE,
   FOLLOW_CHOSEN_USER,
   GET_CHOSEN_TAG_POSTS,
@@ -22,16 +22,20 @@ export const postReducer = (state = initialState, action) => {
     }
 
     case GET_GLOBAL_POSTS: {
-      return {...state, posts: payload, pagination: payload.articlesCount / payload.articles.length }
+      return {...state, posts: payload, pagination: Math.ceil(payload.articlesCount / payload.articles.length) }
     }
 
     case GET_CHOSEN_TAG_POSTS: {
       return {...state, chosenTag: payload.tag, chosenTagPosts: payload.posts, active: "chosen",
-              pagination: payload.posts.articlesCount / payload.posts.articles.length }
+              pagination: Math.ceil(payload.posts.articlesCount / payload.posts.articles.length) }
     }
 
     case GET_ONE_POST: {
       return {...state, chosenPost: payload}
+    }
+
+    case CLEAR_POSTS: {
+      return {...state, posts: ''}
     }
 
     case FOLLOW_CHOSEN_USER: {

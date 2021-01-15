@@ -1,39 +1,55 @@
 import './UserProfile.css'
 import FooterPage from "../footer-page/FooterPage";
-import {Link} from "react-router-dom";
-import {getFavoritedPosts, getMyPosts, loadingLS, showFeed} from "../../redux/action-creators";
+import {Link, withRouter} from "react-router-dom";
+import {
+  clearPosts,
+  getFavoritedPosts,
+  getGlobalPosts,
+  getMyPosts,
+  loadingLS,
+  showFeed
+} from "../../redux/action-creators";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import postFetch from "../../services/postFetch";
 import Loading from "../../services/Loading";
 import Post from "../post/Post";
+import Pagination from "../pagination/Pagination";
 
 
-export default function UserProfile (){
+function UserProfile ({match:{params:{numberPage}}}){
 
   const dispatch = useDispatch()
-  const active = useSelector(({post: {active}}) => active)
+  const {active, posts:{articles}, paginationActive} = useSelector(({post: {active, posts, paginationActive}}) => ({active, posts, paginationActive}))
   const {loggedIn, user, user:{image, username, bio}} = useSelector(({user: {loggedIn, user}}) => ({loggedIn, user}))
-
-  const [posts, setPosts] = useState('')
 
 
   useEffect(() => {
     let url = ''
     const options = {
     }
-    if(active === 'global') {url = `/api/articles?author=${username}&limit=10&offset=0`}
-    if(active === 'your') {url = `/api/articles?favorited=${username}&limit=10&offset=0`}
-    
+    if(active === 'global') {
+      url = `/api/articles?author=${username}&limit=10&offset=0`
+      if (paginationActive > 1) {
+        url = `/api/articles?author=${username}&limit=10&offset=${paginationActive - 1}0`
+      }
+    }
+    if(active === 'your') {
+      url = `/api/articles?favorited=${username}&limit=10&offset=0`
+      if (paginationActive > 1) {
+        url = `/api/articles?favorited=${username}&limit=10&offset=${paginationActive - 1}0`
+      }
+    }
+
     postFetch(url, options)
-        .then(({data: {articles}}) => {
-          setPosts(articles)
+        .then(({data}) => {
+          dispatch(getGlobalPosts(data))
         })
-  }, [active, dispatch, username])
+  }, [active, dispatch, paginationActive, username])
 
   const clickLink = (name) => {
     dispatch(showFeed(name))
-    setPosts('')
+    dispatch(clearPosts())
   }
 
   return (
@@ -50,18 +66,21 @@ export default function UserProfile (){
 
             <body className='profile-body'>
             <div className='profile-nav-link'>
-              <div onClick={() => clickLink('global')}
-                   className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>My Posts
-              </div>
-              <Link to={loggedIn || '/login'}
+              <Link to={`/profile/${username}`}
+                    onClick={() => clickLink('global')}
+                    className={active === 'global' ? 'nItem chosenItem' : 'nItem'}>My Posts
+              </Link>
+              <Link to={loggedIn ? `/profile/${username}/favorites` : '/login'}
                     onClick={() => clickLink('your')}
-                    className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Favorited Posts</Link>
+                    className={active === 'your' ? 'nItem chosenItem' : 'nItem'}>Favorited Posts
+              </Link>
             </div>
 
             <div>
-              {!!posts ? posts.map(value => <Post post={value} key={value.id}/>) : <Loading/>}
+              {!!articles ? articles.map((value, i) => <Post post={value} key={i}/>) : <Loading/>}
             </div>
 
+            {!!articles && <Pagination/>}
             </body>
 
 
@@ -69,3 +88,4 @@ export default function UserProfile (){
         </div>
     );
 }
+export default withRouter(UserProfile)

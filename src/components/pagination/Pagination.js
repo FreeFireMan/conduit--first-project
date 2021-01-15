@@ -1,10 +1,10 @@
 import './Pagination.css'
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import {setActivePagination} from "../../redux/action-creators";
 
-export default function Pagination() {
+function Pagination(props) {
 
   const dispatch = useDispatch()
   const {pagination, paginationActive} = useSelector(({post: {pagination, paginationActive}}) => ({
@@ -12,11 +12,13 @@ export default function Pagination() {
     paginationActive
   }))
 
+
   const arrPag = []
   arrPag[pagination - 1] = pagination
   arrPag.fill(0)
 
-  return (
+   return (
+      pagination > 1 &&
       <div className='pagination-wrapper'>
         {arrPag.map((value, i) => <NavLink to={`/page/${i+1}`} key={i}
                   onClick={() => dispatch(setActivePagination(i))}
@@ -25,3 +27,5 @@ export default function Pagination() {
       </div>
   );
 }
+
+export default withRouter(Pagination)

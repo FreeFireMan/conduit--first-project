@@ -1,5 +1,5 @@
 import {
-  CHOSE_TAG,
+  CHOSE_TAG, CLEAR_POSTS,
   FAVORITE_CHOSEN_ARTICLE,
   FOLLOW_CHOSEN_USER, GET_CHOSEN_TAG_POSTS,
   GET_GLOBAL_POSTS,
@@ -14,6 +14,7 @@ export const getGlobalPosts = (value) => ({type: GET_GLOBAL_POSTS, payload: valu
 export const getChosenTagPosts = (value) => ({type: GET_CHOSEN_TAG_POSTS, payload: value})
 export const getChosenPost = (value) => ({type: GET_ONE_POST, payload: value})
 export const choseTag = (value) => ({type: CHOSE_TAG, payload: value})
+export const clearPosts = () => ({type: CLEAR_POSTS})
 
 export const followChosenUser = () => ({type: FOLLOW_CHOSEN_USER})
 export const favoriteChosenArticle = () => ({type: FAVORITE_CHOSEN_ARTICLE})

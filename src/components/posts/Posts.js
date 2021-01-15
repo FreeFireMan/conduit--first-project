@@ -9,7 +9,9 @@ import {withRouter} from "react-router-dom";
 
 function Posts({match:{params:{numberPage}}}) {
 
-  const {articles} = useSelector(({post: {posts}}) => posts), dispatch = useDispatch();
+  const {articles} = useSelector(({post: {posts}}) => posts)
+      const dispatch = useDispatch();
+
   useEffect(() => {
     let url = '/api/articles?limit=10&offset=0'
     if(numberPage) {
