@@ -5,16 +5,15 @@ import Error from "../error/Error";
 import {useState} from "react";
 import postFetch from "../../services/postFetch";
 import {useDispatch, useSelector} from "react-redux";
-import {IsLogIn} from "../../redux/action-creators";
+import {getErrorOnUpdateInfo, IsLogIn} from "../../redux/action-creators";
 
 
 function SignIn() {
 
   const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState('')
   const [email, setEmail] = useState('')
 
-  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+  const {loggedIn, errors} = useSelector(({user: {loggedIn, errors}}) => ({loggedIn, errors}))
   const dispatch = useDispatch()
 
   const ClickSignIn = () => {
@@ -30,10 +29,10 @@ function SignIn() {
           dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {
-          setErrors(errors)
+          dispatch(getErrorOnUpdateInfo(errors))
         })
   }
-  if(loggedIn){
+  if (loggedIn) {
     return <Redirect to="/"/>
   }
 

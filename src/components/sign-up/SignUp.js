@@ -4,7 +4,7 @@ import {useState} from "react";
 import postFetch from "../../services/postFetch";
 import Error from "../error/Error";
 import {useDispatch, useSelector} from "react-redux";
-import {IsLogIn} from "../../redux/action-creators";
+import {getErrorOnUpdateInfo, IsLogIn} from "../../redux/action-creators";
 
 
 function SignUp() {
@@ -12,9 +12,9 @@ function SignUp() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState('')
 
-  const loggedIn = useSelector(({user: {loggedIn}}) => loggedIn)
+
+  const {loggedIn, errors} = useSelector(({user: {loggedIn, errors}}) => ({loggedIn, errors}))
   const dispatch = useDispatch()
 
   const ClickSignUp = () => {
@@ -30,7 +30,7 @@ function SignUp() {
           dispatch(IsLogIn(user))
         })
         .catch(({response: {data: {errors}}}) => {
-          setErrors(errors)
+          dispatch(getErrorOnUpdateInfo(errors))
         })
   }
   if (loggedIn) {

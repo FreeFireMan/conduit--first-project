@@ -9,7 +9,7 @@ export default function Error() {
   return (
       <ul>
         {errorKey.map((key, i) => errors[key].map((value, i) =>
-                    <li key={i} className='errors'><b>{key} {value}</b></li>))
+            <li key={i} className='errors'><b>{key} {value}</b></li>))
         }
       </ul>
   );
