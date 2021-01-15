@@ -5,6 +5,8 @@ import {getFavoritedPosts, getMyPosts, loadingLS, showFeed} from "../../redux/ac
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import postFetch from "../../services/postFetch";
+import Loading from "../../services/Loading";
+import Post from "../post/Post";
 
 
 export default function UserProfile (){
@@ -17,7 +19,6 @@ export default function UserProfile (){
 
 
   useEffect(() => {
-    // dispatch(loadingLS(true))
     let url = ''
     const options = {
     }
@@ -25,8 +26,8 @@ export default function UserProfile (){
     if(active === 'your') {url = `/api/articles?favorited=${username}&limit=10&offset=0`}
     
     postFetch(url, options)
-        .then(response => {
-          setPosts(response)
+        .then(({data: {articles}}) => {
+          setPosts(articles)
         })
   }, [active, dispatch, username])
 
@@ -58,7 +59,7 @@ export default function UserProfile (){
             </div>
 
             <div>
-              {posts ? posts.map : 'Loading...'}
+              {!!posts ? posts.map(value => <Post post={value} key={value.id}/>) : <Loading/>}
             </div>
 
             </body>
