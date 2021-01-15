@@ -2,10 +2,10 @@ import './SignIn.css'
 import {Link, Redirect} from "react-router-dom";
 import FooterPage from "../footer-page/FooterPage";
 import Error from "../error/Error";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import postFetch from "../../services/postFetch";
 import {useDispatch, useSelector} from "react-redux";
-import {getTokenFromLocalStorrige, IsLogIn} from "../../redux/action-creators";
+import {IsLogIn} from "../../redux/action-creators";
 
 
 function SignIn() {

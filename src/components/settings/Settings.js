@@ -1,7 +1,7 @@
 import './Settings.css'
 import FooterPage from "../footer-page/FooterPage";
 import {useDispatch, useSelector} from "react-redux";
-import {getErrorOnToken, getErrorOnUpdateInfo, IsLogOut, updateInfo} from "../../redux/action-creators";
+import {getErrorOnUpdateInfo, IsLogOut, updateInfo} from "../../redux/action-creators";
 import {Redirect} from "react-router-dom";
 import {useState} from "react";
 import postFetch from "../../services/postFetch";

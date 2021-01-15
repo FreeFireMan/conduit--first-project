@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink, withRouter} from "react-router-dom";
 import {setActivePagination} from "../../redux/action-creators";
 
-function Pagination(props) {
+function Pagination() {
 
   const dispatch = useDispatch()
   const {pagination, paginationActive} = useSelector(({post: {pagination, paginationActive}}) => ({

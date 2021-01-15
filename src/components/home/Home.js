@@ -1,6 +1,6 @@
 import './Home.css'
 import {useDispatch, useSelector} from "react-redux";
-import {choseTag, getChosenTagPosts, showFeed} from "../../redux/action-creators";
+import {getChosenTagPosts, showFeed} from "../../redux/action-creators";
 import {Link, withRouter} from "react-router-dom";
 import Posts from "../posts/Posts";
 import FooterPage from "../footer-page/FooterPage";
